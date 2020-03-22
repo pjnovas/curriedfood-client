@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Platform, StyleSheet, Text, Button, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, Button, View } from 'react-native';
 
+// eslint-disable-next-line react/prop-types
 export default ({ count, setCount }) => (
   <View style={styles.container}>
     <Text style={styles.count}>Your count is {count}</Text>
