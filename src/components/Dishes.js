@@ -1,24 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text, Button, View } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
+import Constants from 'expo-constants';
 
 // eslint-disable-next-line react/prop-types
-export default ({ count, setCount }) => (
-  <View style={styles.container}>
-    <Text style={styles.count}>Your count is {count}</Text>
-    <Button onPress={() => setCount(count + 1)} title="Sum" />
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
   </View>
+);
+
+// eslint-disable-next-line react/prop-types
+export default ({ list }) => (
+  <SafeAreaView style={styles.container}>
+    <FlatList
+      data={list}
+      renderItem={({ item }) => <Item title={item.Titulo} />}
+      keyExtractor={(item) => item.id}
+    />
+  </SafeAreaView>
 );
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    flexDirection: 'row',
+    marginTop: Constants.statusBarHeight
   },
-  count: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
+  item: {
+    backgroundColor: '#f9fdd5',
+    padding: 20
+  },
+  title: {
+    fontSize: 20
   }
 });

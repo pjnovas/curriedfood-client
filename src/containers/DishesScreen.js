@@ -1,25 +1,31 @@
-import React, { useReducer } from 'react';
+import React from 'react';
+import { useAxiosRetry } from 'use-axios-hooks';
+
+import { StyleSheet, View, Text } from 'react-native';
 import Dishes from '../components/Dishes';
 
-const initialState = { count: 0 };
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'increment':
-      return { count: state.count + 1 };
-    case 'decrement':
-      return { count: state.count - 1 };
-    default:
-      throw new Error();
-  }
-};
+const DISHES_URI = 'http://192.168.1.4:1337/comidas';
 
 export default () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [{ data, isLoading, error }] = useAxiosRetry(DISHES_URI, {
+    retryCount: 5,
+    retryInterval: 2000
+  });
+
   return (
-    <Dishes
-      setCount={() => dispatch({ type: 'increment' })}
-      count={state.count}
-    />
+    <View style={styles.container}>
+      {isLoading && <Text>Loading ...</Text>}
+      {error && <Text>Failed: {JSON.stringify(error)}</Text>}
+      {data && <Dishes list={data.data} />}
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF'
+  }
+});
