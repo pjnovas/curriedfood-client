@@ -25,9 +25,13 @@
     "process": true,
     "console": true,
     "global": true,
-    "module": true
+    "module": true,
+    "require": true
   },
   "rules": {
-    "react/display-name": 0
+    "react/display-name": "off",
+    "react/prop-types": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
