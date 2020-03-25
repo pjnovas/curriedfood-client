@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Button, Layout, Text } from '@ui-kitten/components';
+import { /* Button,*/ Layout, Text } from '@ui-kitten/components';
 import { useSafeArea } from 'react-native-safe-area-context';
-import { Toolbar } from '../../components/toolbar.component';
-import { ImageOverlay } from '../../components/image-overlay.component';
-import { ProgressBar } from '../../components/progress-bar.component';
+import { Toolbar } from '../../components/toolbar';
+import { ImageOverlay } from '../../components/image-overlay';
+import { ProgressBar } from '../../components/progress-bar';
 
 export const DishDetailsScreen = (props) => {
   const { dish } = props.route.params;
@@ -25,12 +25,12 @@ export const DishDetailsScreen = (props) => {
           </Text>
           <ProgressBar
             style={styles.progressBar}
-            progress={dish.progress}
-            text={`${dish.progress}%`}
+            progress={dish.duration}
+            text={`${dish.duration} min`}
           />
-          <Text style={styles.title}>{dish.description}</Text>
+          <Text style={styles.title}>{dish.recipe}</Text>
         </View>
-        <Button onPress={props.navigation.goBack}>COMPLETE</Button>
+        {/* <Button onPress={props.navigation.goBack}>COMPLETE</Button> */}
       </Layout>
     </React.Fragment>
   );
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     marginVertical: 4
   },
   progressBar: {
-    width: '50%',
+    width: '80%',
     marginVertical: 16
   }
 });

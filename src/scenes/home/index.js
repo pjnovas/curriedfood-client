@@ -1,2 +1,2 @@
-export { AboutScreen } from './about.component';
-export { HomeTabBar } from './home-tab-bar.component';
+export { AboutScreen } from './about';
+export { HomeTabBar } from './home-tab-bar';

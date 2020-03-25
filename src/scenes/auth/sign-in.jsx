@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet, View } from 'react-native';
 import { Button, CheckBox, Layout } from '@ui-kitten/components';
 import { Formik } from 'formik';
 import { AppRoute } from '../../navigation/app-routes';
-import { FormInput } from '../../components/form-input.component';
+import { FormInput } from '../../components/form-input';
 import { EyeIcon, EyeOffIcon } from '../../assets/icons';
 import { SignInData, SignInSchema } from '../../data/sign-in.model';
 

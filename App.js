@@ -8,7 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
-import { AppNavigator } from './src/navigation/app.navigator';
+import { AppNavigator } from './src/navigation/app';
 import { AppRoute } from './src/navigation/app-routes';
 
 const theme = { ...darkTheme, ...appTheme };

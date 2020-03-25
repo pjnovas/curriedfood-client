@@ -1,1 +1,1 @@
-export { ProfileScreen } from './profile.component';
+export { ProfileScreen } from './profile';

@@ -3,7 +3,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import { ProfileNavigator } from './profile.navigator';
+import { ProfileNavigator } from './profile';
 import { AppRoute } from './app-routes';
 import { AboutScreen, HomeTabBar } from '../scenes/home';
 

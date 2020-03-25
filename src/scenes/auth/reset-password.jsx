@@ -1,22 +1,21 @@
 import React from 'react';
 import { ImageBackground, StyleSheet } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
-import { Formik } from 'formik';
 import { Button, Layout } from '@ui-kitten/components';
+import { Formik } from 'formik';
 import { AppRoute } from '../../navigation/app-routes';
-import { Toolbar } from '../../components/toolbar.component';
-import { FormInput } from '../../components/form-input.component';
-import { SignUpData, SignUpSchema } from '../../data/sign-up.model';
+import { FormInput } from '../../components/form-input';
+import { Toolbar } from '../../components/toolbar';
+import {
+  ResetPasswordData,
+  ResetPasswordSchema
+} from '../../data/reset-password.model';
 
-export const SignUpScreen = (props) => {
+export const ResetPasswordScreen = (props) => {
   const insets = useSafeArea();
 
   const onFormSubmit = (/*values*/) => {
-    navigateHome();
-  };
-
-  const navigateHome = () => {
-    props.navigation.navigate(AppRoute.HOME);
+    navigateSignIn();
   };
 
   const navigateSignIn = () => {
@@ -31,18 +30,8 @@ export const SignUpScreen = (props) => {
         placeholder="Email"
         keyboardType="email-address"
       />
-      <FormInput
-        id="password"
-        style={styles.formControl}
-        placeholder="Password"
-      />
-      <FormInput
-        id="username"
-        style={styles.formControl}
-        placeholder="Username"
-      />
-      <Button style={styles.submitButton} onPress={props.handleSubmit}>
-        SIGN UP
+      <Button style={styles.button} onPress={props.handleSubmit}>
+        DONE
       </Button>
     </React.Fragment>
   );
@@ -57,20 +46,12 @@ export const SignUpScreen = (props) => {
       </ImageBackground>
       <Layout style={styles.formContainer}>
         <Formik
-          initialValues={SignUpData.empty()}
-          validationSchema={SignUpSchema}
+          initialValues={ResetPasswordData.empty()}
+          validationSchema={ResetPasswordSchema}
           onSubmit={onFormSubmit}
         >
           {renderForm}
         </Formik>
-        <Button
-          style={styles.haveAccountButton}
-          appearance="ghost"
-          status="basic"
-          onPress={navigateSignIn}
-        >
-          Already have an account?
-        </Button>
       </Layout>
     </React.Fragment>
   );
@@ -88,10 +69,7 @@ const styles = StyleSheet.create({
   formControl: {
     marginVertical: 4
   },
-  submitButton: {
+  button: {
     marginVertical: 24
-  },
-  haveAccountButton: {
-    alignSelf: 'center'
   }
 });

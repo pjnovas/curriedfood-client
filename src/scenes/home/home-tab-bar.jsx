@@ -4,8 +4,8 @@ import { AppRoute } from '../../navigation/app-routes';
 import {
   SafeAreaLayout,
   SaveAreaInset
-} from '../../components/safe-area-layout.component';
-import { Toolbar } from '../../components/toolbar.component';
+} from '../../components/safe-area-layout';
+import { Toolbar } from '../../components/toolbar';
 import { UserIcon, InfoIcon, LogoutIcon, MenuIcon } from '../../assets/icons';
 
 const menu = [

@@ -1,18 +1,18 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Divider, Layout, Text } from '@ui-kitten/components';
-import { Toolbar } from '../../components/toolbar.component';
+import { Toolbar } from '../../components/toolbar';
 import {
   SafeAreaLayout,
   SaveAreaInset
-} from '../../components/safe-area-layout.component';
+} from '../../components/safe-area-layout';
 
-export const AboutScreen = (props) => (
+export const ProfileScreen = (props) => (
   <SafeAreaLayout style={styles.safeArea} insets={SaveAreaInset.TOP}>
-    <Toolbar title="About" onBackPress={props.navigation.goBack} />
+    <Toolbar title="Profile" onBackPress={props.navigation.goBack} />
     <Divider />
     <Layout style={styles.container}>
-      <Text category="h1">ABOUT</Text>
+      <Text category="h1">PROFILE</Text>
     </Layout>
   </SafeAreaLayout>
 );
