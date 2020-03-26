@@ -10,8 +10,8 @@ import { UserIcon, InfoIcon, LogoutIcon, MenuIcon } from '../../assets/icons';
 
 const menu = [
   { title: 'About', icon: InfoIcon },
-  { title: 'Profile', icon: UserIcon },
-  { title: 'Log Out', icon: LogoutIcon }
+  { title: 'Perfil', icon: UserIcon },
+  { title: 'Salir', icon: LogoutIcon }
 ];
 
 export const HomeTabBar = (props) => {
@@ -19,7 +19,7 @@ export const HomeTabBar = (props) => {
     const { [index]: selectedItem } = menu;
 
     switch (selectedItem.title) {
-      case 'Log Out':
+      case 'Salir':
         props.navigation.navigate(AppRoute.AUTH);
         break;
       default:

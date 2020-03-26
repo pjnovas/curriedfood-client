@@ -28,17 +28,17 @@ const HomeTabsNavigator = () => (
     <TopTab.Screen
       name={AppRoute.DISHES}
       component={DishesScreen}
-      options={{ title: 'DISHES', tabBarIcon: DishesIcon }}
+      options={{ title: 'COMIDAS', tabBarIcon: DishesIcon }}
     />
     <TopTab.Screen
       name={AppRoute.KITCHEN}
       component={DishesScreen}
-      options={{ title: 'KITCHEN', tabBarIcon: HomeIcon }}
+      options={{ title: 'COCINA', tabBarIcon: HomeIcon }}
     />
     <TopTab.Screen
       name={AppRoute.MARKET}
       component={DishesScreen}
-      options={{ title: 'MARKET', tabBarIcon: ShoppingCartIcon }}
+      options={{ title: 'SUPER', tabBarIcon: ShoppingCartIcon }}
     />
   </TopTab.Navigator>
 );

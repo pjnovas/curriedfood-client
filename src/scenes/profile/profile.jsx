@@ -9,10 +9,10 @@ import {
 
 export const ProfileScreen = (props) => (
   <SafeAreaLayout style={styles.safeArea} insets={SaveAreaInset.TOP}>
-    <Toolbar title="Profile" onBackPress={props.navigation.goBack} />
+    <Toolbar title="Perfil" onBackPress={props.navigation.goBack} />
     <Divider />
     <Layout style={styles.container}>
-      <Text category="h1">PROFILE</Text>
+      <Text category="h1">PERFIL</Text>
     </Layout>
   </SafeAreaLayout>
 );

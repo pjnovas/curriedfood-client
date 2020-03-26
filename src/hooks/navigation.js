@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export const useNavigateTo = (to) => {
   const navigation = useNavigation();
-  return () => navigation.navigate(to);
+  return (args) => navigation.navigate(to, args);
 };
 
 export const useNavigateBack = () => {
