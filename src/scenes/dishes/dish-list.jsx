@@ -28,8 +28,9 @@ const styles = StyleService.create({
     backgroundColor: 'background-basic-color-1'
   },
   item: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingHorizontal: 12
   }
 });

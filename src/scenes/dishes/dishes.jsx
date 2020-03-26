@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAxiosRetry } from 'use-axios-hooks';
-import { Layout, StyleService, Text } from '@ui-kitten/components';
+import { Layout, StyleService, Text, Spinner } from '@ui-kitten/components';
 import DishList from './dish-list';
 
 // import Config from 'react-native-config'; >>> DOES NOT WORK WITH EXPO + RN 0.61
@@ -16,7 +16,7 @@ export const DishesScreen = () => {
 
   return (
     <Layout style={styles.container}>
-      {isLoading && <Text>Cargando ...</Text>}
+      {isLoading && <Spinner />}
       {error && <Text>Error: {JSON.stringify(error)}</Text>}
       {data && <DishList data={data.data} />}
     </Layout>

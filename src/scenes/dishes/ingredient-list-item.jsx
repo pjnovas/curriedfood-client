@@ -1,14 +1,34 @@
 import React from 'react';
 import { ListItem, Text } from '@ui-kitten/components';
 
-const IngredientListItem = ({
+const unitText = {
+  un: '',
+  cu: 'cucharadas de',
+  gr: 'gramos de',
+  lt: 'litros de',
+  tz: 'tazas de',
+  ml: 'mililitros'
+};
+
+const getText = ({
   product: { name },
   quantity,
   unit: { code },
-  ...props
-}) => (
+  alt_quantity,
+  alt_unit
+}) => {
+  let text = `${quantity} ${unitText[code] || ''} ${name}`;
+
+  if (alt_quantity) {
+    text += ` (${alt_quantity} ${alt_unit.code})`;
+  }
+
+  return text;
+};
+
+const IngredientListItem = (props) => (
   <ListItem {...props}>
-    <Text category="s1">{`${quantity} ${code} de ${name}`}</Text>
+    <Text category="s1">{getText(props)}</Text>
   </ListItem>
 );
 

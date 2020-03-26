@@ -1,15 +1,33 @@
 import React from 'react';
-import { List, StyleService } from '@ui-kitten/components';
+import {
+  List,
+  StyleService,
+  Button,
+  Divider,
+  Layout
+} from '@ui-kitten/components';
 import IngredientListItem from './ingredient-list-item';
+import { PeopleIcon } from '../../assets/icons';
 
 const IngredientList = (props) => (
-  <List
-    style={styles.list}
-    renderItem={({ item }) => (
-      <IngredientListItem style={styles.item} {...item} />
-    )}
-    {...props}
-  />
+  <Layout style={{ flex: 1 }}>
+    <Button
+      style={styles.btn}
+      appearance="ghost"
+      status="basic"
+      icon={PeopleIcon}
+    >
+      {`${props.dish.servings}`} Porciones
+    </Button>
+    <Divider />
+    <List
+      style={styles.list}
+      renderItem={({ item }) => (
+        <IngredientListItem style={styles.item} {...item} />
+      )}
+      {...props}
+    />
+  </Layout>
 );
 
 const styles = StyleService.create({

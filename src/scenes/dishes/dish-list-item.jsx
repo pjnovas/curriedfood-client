@@ -1,11 +1,11 @@
 import React from 'react';
 import { ListItem, Text } from '@ui-kitten/components';
-import DishDurationBar from './dish-duration-bar';
+import DishDuration from './dish-duration';
 
-const DishListItem = ({ title, recipe, duration, ...props }) => (
+const DishListItem = ({ title, duration, ...props }) => (
   <ListItem {...props}>
-    <Text category="s1">{title}</Text>
-    <DishDurationBar duration={duration} />
+    <Text category="h6">{title}</Text>
+    <DishDuration duration={duration} />
   </ListItem>
 );
 

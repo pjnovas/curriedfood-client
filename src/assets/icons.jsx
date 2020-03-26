@@ -18,9 +18,13 @@ export const ShoppingCartIcon = (style) => (
   <Icon {...style} name="cart-outline" />
 );
 
+export const SearchIcon = (style) => <Icon {...style} name="magnify" />;
+export const ClockIcon = (style) => <Icon {...style} name="clock-outline" />;
+export const CookLevelIcon = (style) => <Icon {...style} name="chef-hat" />;
 // Account
 
 export const UserIcon = (style) => <Icon {...style} name="account-outline" />;
 export const LogoutIcon = (style) => <Icon {...style} name="exit-to-app" />;
-
-export const SearchIcon = (style) => <Icon {...style} name="magnify" />;
+export const PeopleIcon = (style) => (
+  <Icon {...style} name="account-multiple" />
+);

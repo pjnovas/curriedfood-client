@@ -7,8 +7,9 @@ import {
 } from '../../components/safe-area-layout';
 import { Toolbar } from '../../components/toolbar';
 import { useNavigateBack } from '../../hooks/navigation';
-import DishDurationBar from './dish-duration-bar';
 import IngredientList from './ingredient-list';
+import DishDuration from './dish-duration';
+import DishDificulty from './dish-dificulty';
 
 const DishDetails = (dish) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -21,8 +22,9 @@ const DishDetails = (dish) => {
     >
       <Toolbar title={dish.title} onBackPress={useNavigateBack()} />
       <Divider />
-      <Layout style={styles.quickInfo}>
-        <DishDurationBar duration={dish.duration} />
+      <Layout style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+        <DishDuration duration={dish.duration} />
+        <DishDificulty level={dish.level} />
       </Layout>
       <Divider />
       <Layout style={styles.content}>
@@ -33,7 +35,7 @@ const DishDetails = (dish) => {
             </Layout>
           </Tab>
           <Tab title="INGREDIENTES">
-            <IngredientList data={dish.ingredients} />
+            <IngredientList dish={dish} data={dish.ingredients} />
           </Tab>
         </TabView>
       </Layout>
@@ -45,7 +47,9 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1
   },
-  quickInfo: {
+  infoBar: {
+    flex: 0,
+    justifyContent: 'center',
     paddingHorizontal: 16
   },
   content: {
