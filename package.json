@@ -31,6 +31,7 @@
     "react-native-svg": "^9.13.6",
     "react-native-tab-view": "^2.13.0",
     "react-native-unimodules": "~0.7.0",
+    "react-native-vector-icons": "^6.6.0",
     "react-native-web": "0.11.7",
     "use-axios-hooks": "^1.0.3",
     "yup": "^0.28.3"

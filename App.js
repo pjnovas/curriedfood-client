@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { mapping, dark as darkTheme } from '@eva-design/eva';
-import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { MaterialIconsPack } from './material-icon-pack';
 import { default as appTheme } from './custom-theme.json';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -18,7 +18,7 @@ export default () => {
 
   return (
     <>
-      <IconRegistry icons={EvaIconsPack} />
+      <IconRegistry icons={MaterialIconsPack} />
       <ApplicationProvider mapping={mapping} theme={theme}>
         <SafeAreaProvider>
           <NavigationContainer>

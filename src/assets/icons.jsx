@@ -1,41 +1,26 @@
 import React from 'react';
 import { Icon } from '@ui-kitten/components';
 
-export const BackIcon = (style) => <Icon {...style} name="arrow-back" />;
-
-export const LayoutIcon = (style) => <Icon {...style} name="layout-outline" />;
-
-export const PersonIcon = (style) => <Icon {...style} name="person-outline" />;
+export const BackIcon = (style) => <Icon {...style} name="chevron-left" />;
 
 export const MoreVerticalIcon = (style) => (
-  <Icon {...style} name="more-vertical" />
+  <Icon {...style} name="dots-vertical" />
 );
 
-export const LogoutIcon = (style) => <Icon {...style} name="log-out-outline" />;
-
-export const InfoIcon = (style) => <Icon {...style} name="info-outline" />;
-
-export const AlertTriangleIcon = (style) => (
-  <Icon {...style} name="alert-triangle-outline" />
+export const InfoIcon = (style) => (
+  <Icon {...style} name="information-outline" />
 );
-
-export const EyeIcon = (style) => <Icon {...style} name="eye-outline" />;
-
-export const EyeOffIcon = (style) => <Icon {...style} name="eye-off-outline" />;
-
 export const MenuIcon = (style) => <Icon {...style} name="menu-outline" />;
 
-export const DishesIcon = (style) => <Icon {...style} name="grid-outline" />;
-export const HomeIcon = (style) => <Icon {...style} name="home-outline" />;
+export const DishesIcon = (style) => <Icon {...style} name="nutrition" />;
+export const HomeIcon = (style) => <Icon {...style} name="fridge-outline" />;
 export const ShoppingCartIcon = (style) => (
-  <Icon {...style} name="shopping-cart-outline" />
-);
-export const UserIcon = (style) => <Icon {...style} name="person-outline" />;
-
-export const DoneAllIcon = (style) => (
-  <Icon {...style} name="done-all-outline" />
+  <Icon {...style} name="cart-outline" />
 );
 
-export const GridIcon = (style) => <Icon {...style} name="grid-outline" />;
+// Account
 
-export const SearchIcon = (style) => <Icon {...style} name="search-outline" />;
+export const UserIcon = (style) => <Icon {...style} name="account-outline" />;
+export const LogoutIcon = (style) => <Icon {...style} name="exit-to-app" />;
+
+export const SearchIcon = (style) => <Icon {...style} name="magnify" />;
