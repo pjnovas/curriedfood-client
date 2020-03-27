@@ -29,13 +29,13 @@ const DishDetails = (dish) => {
       <Divider />
       <Layout style={styles.content}>
         <TabView selectedIndex={selectedIndex} onSelect={setSelectedIndex}>
+          <Tab title="INGREDIENTES">
+            <IngredientList dish={dish} />
+          </Tab>
           <Tab title="RECETA">
             <Layout style={styles.tabContainer}>
               <Text>{dish.recipe}</Text>
             </Layout>
-          </Tab>
-          <Tab title="INGREDIENTES">
-            <IngredientList dish={dish} data={dish.ingredients} />
           </Tab>
         </TabView>
       </Layout>
