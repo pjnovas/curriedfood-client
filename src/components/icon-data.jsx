@@ -7,6 +7,7 @@ const IconData = ({ icon, text, reverse, children, ...props }) => (
       flexDirection: `row${reverse ? '-reverse' : ''}`,
       alignItems: 'center'
     }}
+    {...props}
   >
     <Button
       style={{ marginHorizontal: -18 }}

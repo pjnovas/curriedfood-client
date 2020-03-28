@@ -10,7 +10,7 @@ import { UserIcon, InfoIcon, LogoutIcon, MenuIcon } from '../../assets/icons';
 
 const menu = [
   { title: 'About', icon: InfoIcon },
-  { title: 'Perfil', icon: UserIcon },
+  { title: 'Profile', icon: UserIcon },
   { title: 'Salir', icon: LogoutIcon }
 ];
 

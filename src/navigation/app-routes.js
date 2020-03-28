@@ -6,7 +6,7 @@ export const AppRoute = {
   HOME: 'Home',
   DISHES: 'Dishes',
   DISHES_DETAILS: 'Dishes Details',
-  KITCHEN: 'My Kitchen',
+  KITCHEN: 'Kitchen',
   MARKET: 'Shopping Cart',
   PROFILE: 'Profile',
   ABOUT: 'About'

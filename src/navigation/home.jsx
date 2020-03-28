@@ -8,6 +8,7 @@ import { AppRoute } from './app-routes';
 import { AboutScreen, HomeTabBar } from '../scenes/home';
 
 import { DishDetailsScreen, DishesScreen } from '../scenes/dishes';
+import { KitchenScreen } from '../scenes/kitchen';
 import { HomeIcon, ShoppingCartIcon, DishesIcon } from '../assets/icons';
 
 // FIXME(REACT-NAVIGATION-5): Not able to disable a pan gesture.
@@ -32,7 +33,7 @@ const HomeTabsNavigator = () => (
     />
     <TopTab.Screen
       name={AppRoute.KITCHEN}
-      component={DishesScreen}
+      component={KitchenScreen}
       options={{ title: 'COCINA', tabBarIcon: HomeIcon }}
     />
     <TopTab.Screen
