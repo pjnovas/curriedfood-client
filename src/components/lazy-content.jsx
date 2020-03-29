@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Layout, StyleService, Text, Spinner } from '@ui-kitten/components';
 
-const LazyContent = ({ data, isLoading, error, View, ...props }) => (
+const LazyContent = ({ data, isLoading, error, View }) => (
   <Layout style={styles.container}>
     {isLoading && <Spinner />}
     {error && <Text>Error: {JSON.stringify(error)}</Text>}
-    {data && <View {...props} data={data} />}
+    {data && <View data={data} />}
   </Layout>
 );
 

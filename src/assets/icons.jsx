@@ -3,6 +3,9 @@ import { Icon } from '@ui-kitten/components';
 
 export const BackIcon = (style) => <Icon {...style} name="chevron-left" />;
 
+export const EyeIcon = (style) => <Icon {...style} name="eye" />;
+export const EyeOffIcon = (style) => <Icon {...style} name="eye-off" />;
+
 export const MoreVerticalIcon = (style) => (
   <Icon {...style} name="dots-vertical" />
 );

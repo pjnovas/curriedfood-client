@@ -1,40 +1,38 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View } from 'react-native';
-import { Button, CheckBox, Layout } from '@ui-kitten/components';
+import { ImageBackground, StyleSheet /*, View*/ } from 'react-native';
+import { Button, Layout, Text } from '@ui-kitten/components';
 import { Formik } from 'formik';
-import { AppRoute } from '../../navigation/app-routes';
+// import { AppRoute } from '../../navigation/app-routes';
 import { FormInput } from '../../components/form-input';
 import { EyeIcon, EyeOffIcon } from '../../assets/icons';
 import { SignInData, SignInSchema } from '../../data/sign-in.model';
 
-export const SignInScreen = (props) => {
-  const [shouldRemember, setShouldRemember] = React.useState(false);
+import { useAuth } from '../../context/auth-context';
+
+export const SignInScreen = (/*props*/) => {
+  const [state, { signIn }] = useAuth();
   const [passwordVisible, setPasswordVisible] = React.useState(false);
 
-  const onFormSubmit = (/*values*/): void => {
-    navigateHome();
-  };
+  // const onFormSubmit = (values) => {
+  //   signIn(values);
+  // };
 
-  const navigateHome = (): void => {
-    props.navigation.navigate(AppRoute.HOME);
-  };
+  // const navigateSignUp = () => {
+  //   props.navigation.navigate(AppRoute.SIGN_UP);
+  // };
 
-  const navigateSignUp = (): void => {
-    props.navigation.navigate(AppRoute.SIGN_UP);
-  };
+  // const navigateResetPassword = () => {
+  //   props.navigation.navigate(AppRoute.RESET_PASSWORD);
+  // };
 
-  const navigateResetPassword = (): void => {
-    props.navigation.navigate(AppRoute.RESET_PASSWORD);
-  };
-
-  const onPasswordIconPress = (): void => {
+  const onPasswordIconPress = () => {
     setPasswordVisible(!passwordVisible);
   };
 
   const renderForm = (props) => (
-    <React.Fragment>
+    <Layout>
       <FormInput
-        id="email"
+        id="identifier"
         style={styles.formControl}
         placeholder="Email"
         keyboardType="email-address"
@@ -42,18 +40,12 @@ export const SignInScreen = (props) => {
       <FormInput
         id="password"
         style={styles.formControl}
-        placeholder="Password"
+        placeholder="Contraseña"
         secureTextEntry={!passwordVisible}
         icon={passwordVisible ? EyeIcon : EyeOffIcon}
         onIconPress={onPasswordIconPress}
       />
-      <View style={styles.resetPasswordContainer}>
-        <CheckBox
-          style={styles.formControl}
-          checked={shouldRemember}
-          onChange={setShouldRemember}
-          text="Remember Me"
-        />
+      {/* <View style={styles.resetPasswordContainer}>
         <Button
           appearance="ghost"
           status="basic"
@@ -61,11 +53,20 @@ export const SignInScreen = (props) => {
         >
           Forgot password?
         </Button>
-      </View>
-      <Button style={styles.submitButton} onPress={props.handleSubmit}>
-        SIGN IN
+      </View> */}
+      {state.error && (
+        <Text style={styles.errorContent} status="danger">
+          {state.error}
+        </Text>
+      )}
+      <Button
+        style={styles.submitButton}
+        onPress={props.handleSubmit}
+        disabled={state.loading}
+      >
+        {`${state.loading ? 'Ingresando ...' : 'Ingresar'}`}
       </Button>
-    </React.Fragment>
+    </Layout>
   );
 
   return (
@@ -78,18 +79,18 @@ export const SignInScreen = (props) => {
         <Formik
           initialValues={SignInData.empty()}
           validationSchema={SignInSchema}
-          onSubmit={onFormSubmit}
+          onSubmit={signIn}
         >
           {renderForm}
         </Formik>
-        <Button
+        {/* <Button
           style={styles.noAccountButton}
           appearance="ghost"
           status="basic"
           onPress={navigateSignUp}
         >
           {"Don't have an account?"}
-        </Button>
+        </Button> */}
       </Layout>
     </React.Fragment>
   );
@@ -107,6 +108,9 @@ const styles = StyleSheet.create({
   resetPasswordContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  errorContent: {
+    margin: 8
   },
   formControl: {
     marginVertical: 4

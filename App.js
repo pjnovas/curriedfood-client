@@ -9,25 +9,21 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { AppNavigator } from './src/navigation/app';
-import { AppRoute } from './src/navigation/app-routes';
+import { AuthProvider } from './src/context/auth-context';
 
 const theme = { ...darkTheme, ...appTheme };
 
-export default () => {
-  const isAuthorized = true;
-
-  return (
-    <>
-      <IconRegistry icons={MaterialIconsPack} />
-      <ApplicationProvider mapping={mapping} theme={theme}>
-        <SafeAreaProvider>
-          <NavigationContainer>
-            <AppNavigator
-              initialRouteName={isAuthorized ? AppRoute.HOME : AppRoute.AUTH}
-            />
-          </NavigationContainer>
-        </SafeAreaProvider>
-      </ApplicationProvider>
-    </>
-  );
-};
+export default () => (
+  <>
+    <IconRegistry icons={MaterialIconsPack} />
+    <ApplicationProvider mapping={mapping} theme={theme}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <AuthProvider>
+            <AppNavigator />
+          </AuthProvider>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </ApplicationProvider>
+  </>
+);

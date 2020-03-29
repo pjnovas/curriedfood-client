@@ -2,17 +2,13 @@ import React from 'react';
 import { List, StyleService } from '@ui-kitten/components';
 import GroceryListItem from './grocery-list-item';
 
-const GroceryList = (props) => {
-  return (
-    <List
-      style={styles.list}
-      renderItem={({ item }) => (
-        <GroceryListItem style={styles.item} {...item} />
-      )}
-      {...props}
-    />
-  );
-};
+const GroceryList = (props) => (
+  <List
+    style={styles.list}
+    renderItem={({ item }) => <GroceryListItem style={styles.item} {...item} />}
+    {...props}
+  />
+);
 
 const styles = StyleService.create({
   list: {

@@ -26,10 +26,10 @@ const getText = ({
   return text;
 };
 
-const GroceryListItem = (props) => (
+const ShopGroceryListItem = (props) => (
   <ListItem {...props}>
     <Text category="s1">{getText(props)}</Text>
   </ListItem>
 );
 
-export default GroceryListItem;
+export default ShopGroceryListItem;

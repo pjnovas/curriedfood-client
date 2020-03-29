@@ -1,6 +1,6 @@
 import React from 'react';
 import { Divider, Tab, TabBar } from '@ui-kitten/components';
-import { AppRoute } from '../../navigation/app-routes';
+import { useAuth } from '../../context/auth-context';
 import {
   SafeAreaLayout,
   SaveAreaInset
@@ -15,12 +15,14 @@ const menu = [
 ];
 
 export const HomeTabBar = (props) => {
+  const [, { signOut }] = useAuth();
+
   const onMenuItemSelect = (index) => {
     const { [index]: selectedItem } = menu;
 
     switch (selectedItem.title) {
       case 'Salir':
-        props.navigation.navigate(AppRoute.AUTH);
+        signOut();
         break;
       default:
         props.navigation.navigate(selectedItem.title);
