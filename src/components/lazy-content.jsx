@@ -11,10 +11,14 @@ const LazyContent = ({ data, isLoading, error, View }) => (
 );
 
 LazyContent.propTypes = {
-  data: PropTypes.any,
+  data: PropTypes.array,
   isLoading: PropTypes.bool,
   error: PropTypes.any,
   View: PropTypes.any
+};
+
+LazyContent.defaultProps = {
+  isLoading: true
 };
 
 const styles = StyleService.create({

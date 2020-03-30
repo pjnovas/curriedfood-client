@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import get from 'lodash/get';
 import axios from 'axios';
 import { AsyncStorage } from 'react-native';
@@ -20,14 +20,14 @@ function AuthProvider({ children }) {
     switch (action.type) {
       case 'RESTORE_DATA':
         return {
-          ...initial,
+          ...prevState,
           ...action.payload,
           loading: false
         };
       case 'LOADING':
         return { ...prevState, error: null, loading: true };
       case 'SIGN_IN':
-        return { ...prevState, ...action.payload, loading: false };
+        return { ...initial, ...action.payload, loading: false };
       case 'SIGN_IN_FAILED': {
         return { ...prevState, ...action.payload, loading: false };
       }
@@ -59,75 +59,83 @@ function AuthProvider({ children }) {
     if (!state.hasSignOut) {
       bootstrapAsync();
     }
-  }, [state]);
+  }, [state.hasSignOut]);
 
-  const signIn = async (data) => {
-    dispatch({ type: 'LOADING' });
+  const actions = useMemo(
+    () => ({
+      signIn: async (data) => {
+        dispatch({ type: 'LOADING' });
 
-    try {
-      const {
-        data: { jwt, user }
-      } = await axios.post(`${Config.API_URL}/auth/local`, data);
+        try {
+          const {
+            data: { jwt, user }
+          } = await axios.post(`${Config.API_URL}/auth/local`, data);
 
-      try {
-        await AsyncStorage.setItem('@jwt', jwt);
-        await AsyncStorage.setItem('@user', JSON.stringify(user));
-      } catch (e) {
-        console.log('Store Auth FAILED', e);
-      }
+          try {
+            await AsyncStorage.setItem('@jwt', jwt);
+            await AsyncStorage.setItem('@user', JSON.stringify(user));
+          } catch (e) {
+            console.log('Store Auth FAILED', e);
+          }
 
-      dispatch({ type: 'SIGN_IN', payload: data });
-    } catch (error) {
-      if (error.response) {
-        if (get(error.response, 'status') === 400) {
+          dispatch({ type: 'SIGN_IN', payload: data });
+        } catch (error) {
+          if (error.response) {
+            if (get(error.response, 'status') === 400) {
+              dispatch({
+                type: 'SIGN_IN_FAILED',
+                payload: {
+                  error: 'email o contraseña incorrectos'
+                }
+              });
+
+              return;
+            }
+
+            dispatch({
+              type: 'SIGN_IN_FAILED',
+              payload: {
+                error: get(
+                  error.response,
+                  'data.message[0].messages[0].message'
+                )
+              }
+            });
+
+            return;
+          }
+
           dispatch({
             type: 'SIGN_IN_FAILED',
             payload: {
-              error: 'email o contraseña incorrectos'
+              error: 'Error no esperado'
             }
           });
+        }
+      },
 
-          return;
+      signOut: async () => {
+        try {
+          await AsyncStorage.removeItem('@jwt');
+          await AsyncStorage.removeItem('@user');
+        } catch (e) {
+          console.log('Clear Auth FAILED', e);
         }
 
-        dispatch({
-          type: 'SIGN_IN_FAILED',
-          payload: {
-            error: get(error.response, 'data.message[0].messages[0].message')
-          }
-        });
+        dispatch({ type: 'SIGN_OUT' });
+      },
 
-        return;
+      signUp: async (data) => {
+        // TODO: send data to api
+        console.log('signUp', data);
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
       }
-
-      dispatch({
-        type: 'SIGN_IN_FAILED',
-        payload: {
-          error: 'Error no esperado'
-        }
-      });
-    }
-  };
-
-  const signOut = async () => {
-    try {
-      await AsyncStorage.removeItem('@jwt');
-      await AsyncStorage.removeItem('@user');
-    } catch (e) {
-      console.log('Clear Auth FAILED', e);
-    }
-
-    dispatch({ type: 'SIGN_OUT' });
-  };
-
-  // const signUp = async (data) => {
-  //   // TODO: send data to api
-  //   console.log('signUp', data);
-  //   dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
-  // };
+    }),
+    []
+  );
 
   return (
-    <AuthContext.Provider value={[state, { signIn, signOut /*, signUp */ }]}>
+    <AuthContext.Provider value={[state, actions]}>
       {children}
     </AuthContext.Provider>
   );

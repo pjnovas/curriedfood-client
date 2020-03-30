@@ -13,9 +13,9 @@ export const SignInScreen = (/*props*/) => {
   const [state, { signIn }] = useAuth();
   const [passwordVisible, setPasswordVisible] = React.useState(false);
 
-  // const onFormSubmit = (values) => {
-  //   signIn(values);
-  // };
+  const onFormSubmit = (values) => {
+    signIn(values);
+  };
 
   // const navigateSignUp = () => {
   //   props.navigation.navigate(AppRoute.SIGN_UP);
@@ -79,7 +79,7 @@ export const SignInScreen = (/*props*/) => {
         <Formik
           initialValues={SignInData.empty()}
           validationSchema={SignInSchema}
-          onSubmit={signIn}
+          onSubmit={onFormSubmit}
         >
           {renderForm}
         </Formik>

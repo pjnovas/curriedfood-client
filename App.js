@@ -10,6 +10,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { AppNavigator } from './src/navigation/app';
 import { AuthProvider } from './src/context/auth-context';
+// import ErrorBoundary from './src/components/error-boundary';
 
 const theme = { ...darkTheme, ...appTheme };
 
