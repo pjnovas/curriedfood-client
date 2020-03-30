@@ -151,4 +151,10 @@ function useAuth() {
   return context;
 }
 
-export { AuthProvider, useAuth };
+function usePlace() {
+  const [state] = useAuth();
+  // TODO: allow user to select a place
+  return get(state, 'user.places[0].id');
+}
+
+export { AuthProvider, useAuth, usePlace };
