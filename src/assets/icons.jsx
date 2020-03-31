@@ -20,6 +20,9 @@ export const HomeIcon = (style) => <Icon {...style} name="fridge-outline" />;
 export const ShoppingCartIcon = (style) => (
   <Icon {...style} name="cart-outline" />
 );
+export const ShoppingCartAddIcon = (style) => (
+  <Icon {...style} name="cart-plus" />
+);
 
 export const SearchIcon = (style) => <Icon {...style} name="magnify" />;
 export const ClockIcon = (style) => <Icon {...style} name="clock-outline" />;

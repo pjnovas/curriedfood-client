@@ -1,8 +1,8 @@
 {
+  "urlRandomness": "pc-ubx",
   "hostType": "lan",
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "w4-2tp",
   "https": false
 }
