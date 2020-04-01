@@ -1,57 +1,45 @@
 import React from 'react';
-import {
-  OverflowMenu,
-  TopNavigation,
-  TopNavigationAction
-} from '@ui-kitten/components';
-import { BackIcon, MoreVerticalIcon } from '../assets/icons';
+import { Appbar, Menu } from 'react-native-paper';
+
+// TODO: search
 
 export const Toolbar = (props) => {
-  const {
-    menu,
-    backIcon,
-    menuIcon,
-    onMenuItemSelect,
-    onBackPress,
-    ...topNavigationProps
-  } = props;
+  const { menu, onMenuItemSelect, onSearch, onBackPress, title } = props;
   const [menuVisible, setMenuVisible] = React.useState(false);
 
-  const onMenuSelect = (index) => {
+  const onMenuSelect = (index) => () => {
     setMenuVisible(false);
-    onMenuItemSelect && onMenuItemSelect(index);
+    onMenuItemSelect(index);
   };
 
   const onMenuActionPress = () => {
     setMenuVisible(!menuVisible);
   };
 
-  const renderMenuAction = (menu) => (
-    <OverflowMenu
-      visible={menuVisible}
-      data={menu}
-      placement="bottom end"
-      onSelect={onMenuSelect}
-      onBackdropPress={onMenuActionPress}
-    >
-      <TopNavigationAction
-        icon={menuIcon || MoreVerticalIcon}
-        onPress={onMenuActionPress}
-      />
-    </OverflowMenu>
-  );
-
-  const renderBackAction = () => (
-    <TopNavigationAction icon={backIcon || BackIcon} onPress={onBackPress} />
-  );
-
   return (
-    <React.Fragment>
-      <TopNavigation
-        {...topNavigationProps}
-        leftControl={onBackPress && renderBackAction()}
-        rightControls={menu && renderMenuAction(menu)}
-      />
-    </React.Fragment>
+    <Appbar dark>
+      {onBackPress && <Appbar.BackAction onPress={onBackPress} />}
+      <Appbar.Content title={title} />
+      {onSearch && <Appbar.Action icon="magnify" />}
+      {menu && (
+        <>
+          <Menu
+            visible={menuVisible}
+            onDismiss={onMenuActionPress}
+            anchor={
+              <Appbar.Action
+                dark
+                icon="dots-vertical"
+                onPress={onMenuActionPress}
+              />
+            }
+          >
+            {menu.map((item, index) => (
+              <Menu.Item key={index} {...item} onPress={onMenuSelect(index)} />
+            ))}
+          </Menu>
+        </>
+      )}
+    </Appbar>
   );
 };

@@ -10,37 +10,31 @@ import { AboutScreen, HomeTabBar } from '../scenes/home';
 import { DishDetailsScreen, DishesScreen } from '../scenes/dishes';
 import { KitchenScreen } from '../scenes/kitchen';
 import { ShoppingListScreen } from '../scenes/market';
-import { HomeIcon, ShoppingCartIcon, DishesIcon } from '../assets/icons';
-
-// FIXME(REACT-NAVIGATION-5): Not able to disable a pan gesture.
-//
-// In v4, it was possible with `navigationOptions: { gesturesEnabled: false }`
-// Basically, I want to do this to disable `back` navigation from home screen to auth
-// For Android, it can be covered with custom BackHandler.
-//
-// I'm not sure if it is a "true way", but I find it better
-// rather than hard-coding business logic in navigators
-// like it is described in https://reactnavigation.org/docs/en/next/auth-flow.html
+// import { HomeIcon, ShoppingCartIcon, DishesIcon } from '../assets/icons';
 
 const Stack = createStackNavigator();
 const TopTab = createMaterialTopTabNavigator();
 
 const HomeTabsNavigator = () => (
-  <TopTab.Navigator tabBar={(props) => <HomeTabBar {...props} />}>
+  <TopTab.Navigator
+    initialRouteName={AppRoute.DISHES}
+    backBehavior="none"
+    tabBar={(props) => <HomeTabBar {...props} />}
+  >
     <TopTab.Screen
       name={AppRoute.DISHES}
       component={DishesScreen}
-      options={{ title: 'COMIDAS', tabBarIcon: DishesIcon }}
+      options={{ title: 'COMIDAS', tabBarIcon: 'nutrition' }}
     />
     <TopTab.Screen
       name={AppRoute.KITCHEN}
       component={KitchenScreen}
-      options={{ title: 'COCINA', tabBarIcon: HomeIcon }}
+      options={{ title: 'COCINA', tabBarIcon: 'fridge-outline' }}
     />
     <TopTab.Screen
       name={AppRoute.MARKET}
       component={ShoppingListScreen}
-      options={{ title: 'SUPER', tabBarIcon: ShoppingCartIcon }}
+      options={{ title: 'SUPER', tabBarIcon: 'cart-outline' }}
     />
   </TopTab.Navigator>
 );
