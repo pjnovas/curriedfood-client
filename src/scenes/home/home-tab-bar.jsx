@@ -1,8 +1,9 @@
 import React from 'react';
+import get from 'lodash/get';
+import { StyleSheet } from 'react-native';
 import { TabBar } from 'react-native-tab-view';
-// import { Text } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Divider } from 'react-native-paper';
+import Theme from '../../theme';
+import Icon from '../../components/icon';
 import { useAuth } from '../../context/auth-context';
 import {
   SafeAreaLayout,
@@ -32,6 +33,14 @@ export const HomeTabBar = (props) => {
     }
   };
 
+  const getProp = (route, prop) =>
+    get(props, `descriptors.${route.key}.options.${prop}`);
+
+  const getLabelText = ({ route }) => getProp(route, 'title');
+  const renderIcon = ({ route, color }) => (
+    <Icon name={getProp(route, 'tabBarIcon')} size={30} color={color} />
+  );
+
   return (
     <SafeAreaLayout insets={SaveAreaInset.TOP}>
       <Toolbar
@@ -41,18 +50,20 @@ export const HomeTabBar = (props) => {
       />
       <TabBar
         {...props}
-        // indicatorStyle={{ backgroundColor: 'white' }}
-        // style={{ backgroundColor: 'pink' }}
-        getLabelText={({ route }) => {
-          const { options } = props.descriptors[route.key];
-          return options.title;
-        }}
-        renderIcon={({ route, focused, color }) => {
-          const { options } = props.descriptors[route.key];
-          return <Icon name={options.tabBarIcon} size={30} color={color} />;
-        }}
+        indicatorStyle={styles.indicator}
+        style={styles.tabBar}
+        getLabelText={getLabelText}
+        renderIcon={renderIcon}
       />
-      <Divider />
     </SafeAreaLayout>
   );
 };
+
+const styles = StyleSheet.create({
+  indicator: {
+    backgroundColor: Theme.colors.text
+  },
+  tabBar: {
+    backgroundColor: Theme.colors.primary
+  }
+});

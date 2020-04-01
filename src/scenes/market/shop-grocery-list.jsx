@@ -1,27 +1,25 @@
 import React from 'react';
-import { List, StyleService } from '@ui-kitten/components';
-import ShopGroceryListItem from './shop-grocery-list-item';
+import { ScrollView } from 'react-native';
+import { List, Checkbox } from 'react-native-paper';
+import { getText } from '../../utils/grocery';
 
 const ShopGroceryList = (props) => (
-  <List
-    style={styles.list}
-    renderItem={({ item }) => (
-      <ShopGroceryListItem style={styles.item} {...item} />
-    )}
-    {...props}
-  />
+  <ScrollView>
+    {props.data.map((item) => (
+      <List.Item
+        key={item.id}
+        title={getText(item)}
+        right={() => (
+          <Checkbox
+          // status={checked ? 'checked' : 'unchecked'}
+          // onPress={() => {
+          //   this.setState({ checked: !checked });
+          // }}
+          />
+        )}
+      />
+    ))}
+  </ScrollView>
 );
-
-const styles = StyleService.create({
-  list: {
-    flex: 1,
-    backgroundColor: 'background-basic-color-1'
-  },
-  item: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    paddingHorizontal: 12
-  }
-});
 
 export default ShopGroceryList;

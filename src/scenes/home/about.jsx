@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Divider, Layout, Text } from '@ui-kitten/components';
+import { Divider, Text } from 'react-native-paper';
+import Layout from '../../components/layout';
 import { Toolbar } from '../../components/toolbar';
 import {
   SafeAreaLayout,
@@ -12,7 +13,7 @@ export const AboutScreen = (props) => (
     <Toolbar title="About" onBackPress={props.navigation.goBack} />
     <Divider />
     <Layout style={styles.container}>
-      <Text category="h1">ABOUT</Text>
+      <Text>ABOUT</Text>
     </Layout>
   </SafeAreaLayout>
 );

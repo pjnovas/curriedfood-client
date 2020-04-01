@@ -1,7 +1,4 @@
-import React from 'react';
-import { ListItem, Text } from '@ui-kitten/components';
-
-const unitText = {
+export const unitText = {
   un: '',
   cu: 'cucharadas de',
   gr: 'gramos de',
@@ -10,7 +7,7 @@ const unitText = {
   ml: 'mililitros'
 };
 
-const getText = ({
+export const getText = ({
   product: { name },
   quantity,
   unit: { code },
@@ -25,11 +22,3 @@ const getText = ({
 
   return text;
 };
-
-const IngredientListItem = (props) => (
-  <ListItem {...props}>
-    <Text category="s1">{getText(props)}</Text>
-  </ListItem>
-);
-
-export default IngredientListItem;

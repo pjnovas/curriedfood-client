@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, StyleService, Text, Spinner } from '@ui-kitten/components';
+import { Text } from 'react-native-paper';
+import Layout from './layout';
+import Spinner from './spinner';
 
 const LazyContent = ({ data, isLoading, error, View }) => (
-  <Layout style={styles.container}>
+  <Layout>
     {isLoading && <Spinner />}
     {error && <Text>Error: {JSON.stringify(error)}</Text>}
     {data && <View data={data} />}
@@ -20,11 +22,5 @@ LazyContent.propTypes = {
 LazyContent.defaultProps = {
   isLoading: true
 };
-
-const styles = StyleService.create({
-  container: {
-    flex: 1
-  }
-});
 
 export default LazyContent;

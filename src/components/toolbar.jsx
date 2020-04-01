@@ -1,7 +1,8 @@
 import React from 'react';
 import { Appbar, Menu } from 'react-native-paper';
+import Theme from '../theme';
 
-// TODO: search
+// TODO: search bar
 
 export const Toolbar = (props) => {
   const { menu, onMenuItemSelect, onSearch, onBackPress, title } = props;
@@ -20,7 +21,7 @@ export const Toolbar = (props) => {
     <Appbar dark>
       {onBackPress && <Appbar.BackAction onPress={onBackPress} />}
       <Appbar.Content title={title} />
-      {onSearch && <Appbar.Action icon="magnify" />}
+      {onSearch && <Appbar.Action icon="magnify" color={Theme.colors.text} />}
       {menu && (
         <>
           <Menu
@@ -28,7 +29,7 @@ export const Toolbar = (props) => {
             onDismiss={onMenuActionPress}
             anchor={
               <Appbar.Action
-                dark
+                color={Theme.colors.text}
                 icon="dots-vertical"
                 onPress={onMenuActionPress}
               />

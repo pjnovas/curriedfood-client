@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 11312,
-  "expoServerNgrokUrl": "https://pc-ubx.anonymous.curriedfood.exp.direct",
-  "packagerNgrokUrl": "https://packager.pc-ubx.anonymous.curriedfood.exp.direct",
-  "ngrokPid": 20716,
+  "packagerPid": 3248,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": 19006
 }

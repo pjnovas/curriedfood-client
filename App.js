@@ -8,11 +8,11 @@ import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as PaperProvider } from 'react-native-paper';
-import theme from './theme';
 
+import theme from './src/theme';
 import { AppNavigator } from './src/navigation/app';
 import { AuthProvider } from './src/context/auth-context';
-// import ErrorBoundary from './src/components/error-boundary';
+import ErrorBoundary from './src/components/error-boundary';
 
 const themeOLD = { ...darkTheme, ...appTheme };
 
@@ -22,11 +22,13 @@ export default () => (
     <ApplicationProvider mapping={mapping} theme={themeOLD}>
       <PaperProvider theme={theme}>
         <SafeAreaProvider>
-          <NavigationContainer>
-            <AuthProvider>
-              <AppNavigator />
-            </AuthProvider>
-          </NavigationContainer>
+          <ErrorBoundary>
+            <NavigationContainer>
+              <AuthProvider>
+                <AppNavigator />
+              </AuthProvider>
+            </NavigationContainer>
+          </ErrorBoundary>
         </SafeAreaProvider>
       </PaperProvider>
     </ApplicationProvider>

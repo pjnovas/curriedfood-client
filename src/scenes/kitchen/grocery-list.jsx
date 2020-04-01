@@ -1,25 +1,18 @@
 import React from 'react';
-import { List, StyleService } from '@ui-kitten/components';
-import GroceryListItem from './grocery-list-item';
+import { ScrollView } from 'react-native';
+import { List } from 'react-native-paper';
+import { getText } from '../../utils/grocery';
 
 const GroceryList = (props) => (
-  <List
-    style={styles.list}
-    renderItem={({ item }) => <GroceryListItem style={styles.item} {...item} />}
-    {...props}
-  />
+  <ScrollView>
+    {props.data.map((item) => (
+      <List.Item
+        key={item.id}
+        title={getText(item)}
+        // TODO: Expiration - right={() => <DishDuration duration={dish.duration} />}
+      />
+    ))}
+  </ScrollView>
 );
-
-const styles = StyleService.create({
-  list: {
-    flex: 1,
-    backgroundColor: 'background-basic-color-1'
-  },
-  item: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    paddingHorizontal: 12
-  }
-});
 
 export default GroceryList;

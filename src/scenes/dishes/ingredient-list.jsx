@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { List, StyleService, Layout, Button } from '@ui-kitten/components';
-import IngredientListItem from './ingredient-list-item';
-import { ShoppingCartAddIcon } from '../../assets/icons';
+import { ScrollView, StyleSheet } from 'react-native';
+import { List, FAB } from 'react-native-paper';
 import NumericSelector from '../../components/numeric-selector';
+import Layout from '../../components/layout';
+import { getText } from '../../utils/grocery';
 
 const servQuantity = (initServ, currServ) => (quantity) =>
   (quantity / initServ) * currServ;
@@ -10,7 +11,7 @@ const servQuantity = (initServ, currServ) => (quantity) =>
 const calcDiv = (calcQty, divisible) => (quantity) =>
   divisible ? calcQty(quantity) : Math.round(calcQty(quantity));
 
-const IngredientList = ({ dish, ...props }) => {
+const IngredientList = ({ dish }) => {
   const [selectedServings, setSelectedServings] = useState(dish.servings || 1);
   const [ingredients, setIngredients] = useState(dish.ingredients || []);
 
@@ -29,7 +30,7 @@ const IngredientList = ({ dish, ...props }) => {
   }, [dish.ingredients, dish.servings, selectedServings]);
 
   return (
-    <Layout style={styles.layout}>
+    <Layout>
       <NumericSelector
         label="PORCIONES"
         selected={selectedServings}
@@ -37,47 +38,25 @@ const IngredientList = ({ dish, ...props }) => {
         visibleItems={6}
         min={1}
       />
-      <List
-        style={styles.list}
-        data={ingredients}
-        renderItem={({ item }) => (
-          <IngredientListItem style={styles.item} {...item} />
-        )}
-        {...props}
-      />
-      <Button
-        style={styles.shopButton}
-        status="primary"
-        size="large"
-        icon={ShoppingCartAddIcon}
-      />
+      <ScrollView contentContainerStyle={styles.list}>
+        {ingredients.map((ingredient) => (
+          <List.Item key={ingredient.id} title={getText(ingredient)} />
+        ))}
+      </ScrollView>
+      <FAB style={styles.fab} icon="cart-plus" />
     </Layout>
   );
 };
 
-const styles = StyleService.create({
-  layout: {
-    flex: 1,
-    height: 600,
-    position: 'relative'
-  },
+const styles = StyleSheet.create({
   list: {
-    flex: 1,
-    backgroundColor: 'background-basic-color-1',
-    marginBottom: 45
+    paddingBottom: 80
   },
-  item: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    paddingHorizontal: 12
-  },
-  shopButton: {
+  fab: {
     position: 'absolute',
-    bottom: 0,
+    margin: 16,
     right: 0,
-    height: 60,
-    width: 60,
-    borderRadius: 50
+    bottom: 0
   }
 });
 

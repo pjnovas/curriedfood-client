@@ -1,6 +1,6 @@
 import React from 'react';
+import { View } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
-import { Layout } from '@ui-kitten/components';
 
 export const SaveAreaInset = {
   TOP: 'top',
@@ -22,5 +22,5 @@ export const SafeAreaLayout = (props) => {
 
   const createInsets = () => React.Children.map(insets, toStyleProp);
 
-  return <Layout {...layoutProps} style={[style, createInsets()]} />;
+  return <View {...layoutProps} style={[style, createInsets()]} />;
 };

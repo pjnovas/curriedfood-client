@@ -10,7 +10,6 @@ import { AboutScreen, HomeTabBar } from '../scenes/home';
 import { DishDetailsScreen, DishesScreen } from '../scenes/dishes';
 import { KitchenScreen } from '../scenes/kitchen';
 import { ShoppingListScreen } from '../scenes/market';
-// import { HomeIcon, ShoppingCartIcon, DishesIcon } from '../assets/icons';
 
 const Stack = createStackNavigator();
 const TopTab = createMaterialTopTabNavigator();

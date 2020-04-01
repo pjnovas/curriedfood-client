@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import times from 'lodash/times';
-import {
-  Text,
-  Button,
-  ButtonGroup,
-  Layout,
-  StyleService
-} from '@ui-kitten/components';
+import { StyleSheet } from 'react-native';
+import { ToggleButton, Text } from 'react-native-paper';
+import Layout from './layout';
 
 // TODO: Allow a bigger range of numbers using arrows to navigate
 
@@ -25,23 +21,15 @@ const NumericSelector = ({
         {label}
       </Text>
     )}
-    <ButtonGroup
-      appearance="outline"
-      status="primary"
+    <ToggleButton.Row
       style={styles.buttonGroup}
+      onValueChange={onChange}
+      value={selected}
     >
-      {/* {items.length && min != items[0] && <Button>{'<'}</Button>} */}
       {times(visibleItems, (i) => i + min).map((i) => (
-        <Button
-          key={i}
-          textStyle={i == selected ? styles.selected : {}}
-          onPress={() => onChange(i)}
-        >
-          {`${i}`}
-        </Button>
+        <ToggleButton icon={`numeric-${i}`} key={i} value={i} />
       ))}
-      {/* <Button>{'>'}</Button> */}
-    </ButtonGroup>
+    </ToggleButton.Row>
   </Layout>
 );
 
@@ -60,17 +48,15 @@ NumericSelector.defaultProps = {
   visibleItems: 5
 };
 
-const styles = StyleService.create({
+const styles = StyleSheet.create({
   container: {
+    flex: 0,
     flexDirection: 'column',
     alignItems: 'center',
     marginTop: 10
   },
   buttonGroup: {
     marginVertical: 8
-  },
-  selected: {
-    color: '#FFFFFF' // TODO: get color from theme
   }
 });
 
