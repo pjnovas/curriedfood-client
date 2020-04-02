@@ -1,80 +1,81 @@
 import React from 'react';
-import { ImageBackground, StyleSheet /*, View*/ } from 'react-native';
-import { Button, Layout, Text } from '@ui-kitten/components';
+import { StyleSheet } from 'react-native';
+import { Button, Caption, Title, Colors } from 'react-native-paper';
 import { Formik } from 'formik';
-// import { AppRoute } from '../../navigation/app-routes';
+import { AppRoute } from '../../navigation/app-routes';
+import Layout from '../../components/layout';
+import Theme from '../../theme';
 import { FormInput } from '../../components/form-input';
-import { EyeIcon, EyeOffIcon } from '../../assets/icons';
 import { SignInData, SignInSchema } from '../../data/sign-in.model';
 
 import { useAuth } from '../../context/auth-context';
 
-export const SignInScreen = (/*props*/) => {
+export const SignInScreen = ({ navigation }) => {
   const [state, { signIn }] = useAuth();
-  const [passwordVisible, setPasswordVisible] = React.useState(false);
+  // const [passwordVisible, setPasswordVisible] = React.useState(false);
 
   const onFormSubmit = (values) => {
     signIn(values);
   };
 
-  // const navigateSignUp = () => {
-  //   props.navigation.navigate(AppRoute.SIGN_UP);
-  // };
-
-  // const navigateResetPassword = () => {
-  //   props.navigation.navigate(AppRoute.RESET_PASSWORD);
-  // };
-
-  const onPasswordIconPress = () => {
-    setPasswordVisible(!passwordVisible);
+  const navigateSignUp = () => {
+    navigation.navigate(AppRoute.SIGN_UP);
   };
 
-  const renderForm = (props) => (
+  const navigateResetPassword = () => {
+    navigation.navigate(AppRoute.RESET_PASSWORD);
+  };
+
+  // const onPasswordIconPress = () => {
+  //   setPasswordVisible(!passwordVisible);
+  // };
+
+  const renderForm = ({ handleSubmit }) => (
     <Layout>
       <FormInput
         id="identifier"
         style={styles.formControl}
-        placeholder="Email"
+        label="Email"
         keyboardType="email-address"
       />
       <FormInput
         id="password"
         style={styles.formControl}
-        placeholder="Contraseña"
-        secureTextEntry={!passwordVisible}
-        icon={passwordVisible ? EyeIcon : EyeOffIcon}
-        onIconPress={onPasswordIconPress}
+        label="Contraseña"
+        secureTextEntry
+        // secureTextEntry={!passwordVisible}
+        // icon={passwordVisible ? EyeIcon : EyeOffIcon}
+        // onIconPress={onPasswordIconPress}
       />
-      {/* <View style={styles.resetPasswordContainer}>
-        <Button
-          appearance="ghost"
-          status="basic"
-          onPress={navigateResetPassword}
-        >
-          Forgot password?
-        </Button>
-      </View> */}
+      <Button
+        dark
+        onPress={navigateResetPassword}
+        style={styles.resetPassword}
+        labelStyle={styles.resetPasswordText}
+      >
+        olvidaste la contraseña?
+      </Button>
       {state.error && (
-        <Text style={styles.errorContent} status="danger">
-          {state.error}
-        </Text>
+        <Caption style={styles.errorContent}>{`Error: ${state.error}`}</Caption>
       )}
       <Button
+        dark
+        mode="contained"
         style={styles.submitButton}
-        onPress={props.handleSubmit}
+        onPress={handleSubmit}
         disabled={state.loading}
+        loading={state.loading}
       >
-        {`${state.loading ? 'Ingresando ...' : 'Ingresar'}`}
+        Ingresar
       </Button>
     </Layout>
   );
 
   return (
-    <React.Fragment>
-      <ImageBackground
-        style={styles.appBar}
-        source={require('../../assets/image-background.jpeg')}
-      />
+    <Layout style={styles.container}>
+      <Layout style={styles.titleCtn}>
+        <Title style={styles.title}>Curried Food</Title>
+      </Layout>
       <Layout style={styles.formContainer}>
         <Formik
           initialValues={SignInData.empty()}
@@ -83,34 +84,52 @@ export const SignInScreen = (/*props*/) => {
         >
           {renderForm}
         </Formik>
-        {/* <Button
-          style={styles.noAccountButton}
-          appearance="ghost"
-          status="basic"
-          onPress={navigateSignUp}
-        >
-          {"Don't have an account?"}
-        </Button> */}
       </Layout>
-    </React.Fragment>
+      <Button dark style={styles.noAccountButton} onPress={navigateSignUp}>
+        No tengo cuenta
+      </Button>
+    </Layout>
   );
 };
 
 const styles = StyleSheet.create({
-  appBar: {
-    height: 192
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   formContainer: {
     flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingVertical: 16,
     paddingHorizontal: 16
   },
-  resetPasswordContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+  titleCtn: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingBottom: 30
+  },
+  title: {
+    fontSize: 30,
+    textAlign: 'center',
+    marginVertical: 10,
+    color: Colors.deepPurple300
+  },
+  resetPassword: {
+    alignSelf: 'flex-end'
+  },
+  resetPasswordText: {
+    color: Theme.colors.text,
+    fontSize: 12
   },
   errorContent: {
-    margin: 8
+    marginTop: 10,
+    marginBottom: 0,
+    fontSize: 20,
+    alignSelf: 'center',
+    color: Theme.colors.error
   },
   formControl: {
     marginVertical: 4
@@ -119,6 +138,7 @@ const styles = StyleSheet.create({
     marginVertical: 24
   },
   noAccountButton: {
+    flex: 1,
     alignSelf: 'center'
   }
 });

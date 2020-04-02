@@ -1,60 +1,54 @@
 import React from 'react';
-import { ImageBackground, StyleSheet } from 'react-native';
-import { useSafeArea } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native';
+import {
+  SafeAreaLayout,
+  SaveAreaInset
+} from '../../components/safe-area-layout';
 import { Formik } from 'formik';
-import { Button, Layout } from '@ui-kitten/components';
+import { Button } from 'react-native-paper';
+import Layout from '../../components/layout';
 import { AppRoute } from '../../navigation/app-routes';
 import { Toolbar } from '../../components/toolbar';
 import { FormInput } from '../../components/form-input';
 import { SignUpData, SignUpSchema } from '../../data/sign-up.model';
 
-export const SignUpScreen = (props) => {
-  const insets = useSafeArea();
-
+export const SignUpScreen = ({ navigation }) => {
   const onFormSubmit = (/*values*/) => {
     navigateHome();
   };
 
   const navigateHome = () => {
-    props.navigation.navigate(AppRoute.HOME);
+    navigation.navigate(AppRoute.HOME);
   };
 
   const navigateSignIn = () => {
-    props.navigation.navigate(AppRoute.SIGN_IN);
+    navigation.navigate(AppRoute.SIGN_IN);
   };
 
-  const renderForm = (props) => (
+  const renderForm = ({ handleSubmit }) => (
     <React.Fragment>
       <FormInput
         id="email"
         style={styles.formControl}
-        placeholder="Email"
+        label="Email"
         keyboardType="email-address"
       />
-      <FormInput
-        id="password"
-        style={styles.formControl}
-        placeholder="Password"
-      />
-      <FormInput
-        id="username"
-        style={styles.formControl}
-        placeholder="Username"
-      />
-      <Button style={styles.submitButton} onPress={props.handleSubmit}>
-        SIGN UP
+      <FormInput id="password" style={styles.formControl} label="Contraseña" />
+      <FormInput id="username" style={styles.formControl} label="Usuario" />
+      <Button
+        dark
+        mode="contained"
+        style={styles.submitButton}
+        onPress={handleSubmit}
+      >
+        REGISTRARME
       </Button>
     </React.Fragment>
   );
 
   return (
-    <React.Fragment>
-      <ImageBackground
-        style={[styles.appBar, { paddingTop: insets.top }]}
-        source={require('../../assets/image-background.jpeg')}
-      >
-        <Toolbar appearance="control" onBackPress={props.navigation.goBack} />
-      </ImageBackground>
+    <SafeAreaLayout style={styles.safeArea} insets={SaveAreaInset.TOP}>
+      <Toolbar title="Registro" onBackPress={navigation.goBack} />
       <Layout style={styles.formContainer}>
         <Formik
           initialValues={SignUpData.empty()}
@@ -63,22 +57,17 @@ export const SignUpScreen = (props) => {
         >
           {renderForm}
         </Formik>
-        <Button
-          style={styles.haveAccountButton}
-          appearance="ghost"
-          status="basic"
-          onPress={navigateSignIn}
-        >
-          Already have an account?
+        <Button dark style={styles.haveAccountButton} onPress={navigateSignIn}>
+          Ya tengo cuenta
         </Button>
       </Layout>
-    </React.Fragment>
+    </SafeAreaLayout>
   );
 };
 
 const styles = StyleSheet.create({
-  appBar: {
-    height: 192
+  safeArea: {
+    flex: 1
   },
   formContainer: {
     flex: 1,

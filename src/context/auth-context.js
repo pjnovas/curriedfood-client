@@ -59,7 +59,7 @@ function AuthProvider({ children }) {
     if (!state.hasSignOut) {
       bootstrapAsync();
     }
-  }, [state.hasSignOut]);
+  }, [state.hasSignOut, state.jwt]);
 
   const actions = useMemo(
     () => ({

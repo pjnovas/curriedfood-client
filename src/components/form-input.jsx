@@ -1,24 +1,28 @@
 import React from 'react';
-import { Input } from '@ui-kitten/components';
+import { StyleSheet } from 'react-native';
+import { TextInput, Caption } from 'react-native-paper';
 import { useFormikContext } from 'formik';
-import { AlertTriangleIcon } from '../assets/icons';
+import Theme from '../theme';
 
 export const FormInput = ({ id, ...inputProps }) => {
   const formContext = useFormikContext();
-
   const { [id]: error } = formContext.errors;
 
-  const fieldProps = {
-    status: error && 'danger',
-    captionIcon: error && AlertTriangleIcon
-  };
-
   return (
-    <Input
-      {...inputProps}
-      {...fieldProps}
-      caption={error}
-      onChangeText={formContext.handleChange(id)}
-    />
+    <>
+      <TextInput
+        {...inputProps}
+        error={!!error}
+        onChangeText={formContext.handleChange(id)}
+        mode="outlined"
+      />
+      {error && <Caption style={styles.error}>{error}</Caption>}
+    </>
   );
 };
+
+const styles = StyleSheet.create({
+  error: {
+    color: Theme.colors.error
+  }
+});

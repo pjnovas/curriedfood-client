@@ -1,8 +1,12 @@
 import React from 'react';
-import { ImageBackground, StyleSheet } from 'react-native';
-import { useSafeArea } from 'react-native-safe-area-context';
-import { Button, Layout } from '@ui-kitten/components';
+import { StyleSheet } from 'react-native';
+import {
+  SafeAreaLayout,
+  SaveAreaInset
+} from '../../components/safe-area-layout';
+import { Button } from 'react-native-paper';
 import { Formik } from 'formik';
+import Layout from '../../components/layout';
 import { AppRoute } from '../../navigation/app-routes';
 import { FormInput } from '../../components/form-input';
 import { Toolbar } from '../../components/toolbar';
@@ -11,39 +15,37 @@ import {
   ResetPasswordSchema
 } from '../../data/reset-password.model';
 
-export const ResetPasswordScreen = (props) => {
-  const insets = useSafeArea();
-
+export const ResetPasswordScreen = ({ navigation }) => {
   const onFormSubmit = (/*values*/) => {
     navigateSignIn();
   };
 
   const navigateSignIn = () => {
-    props.navigation.navigate(AppRoute.SIGN_IN);
+    navigation.navigate(AppRoute.SIGN_IN);
   };
 
-  const renderForm = (props) => (
-    <React.Fragment>
+  const renderForm = ({ handleSubmit }) => (
+    <Layout>
       <FormInput
         id="email"
         style={styles.formControl}
-        placeholder="Email"
+        label="Email"
         keyboardType="email-address"
       />
-      <Button style={styles.button} onPress={props.handleSubmit}>
-        DONE
+      <Button
+        dark
+        mode="contained"
+        style={styles.button}
+        onPress={handleSubmit}
+      >
+        RECUPERAR
       </Button>
-    </React.Fragment>
+    </Layout>
   );
 
   return (
-    <React.Fragment>
-      <ImageBackground
-        style={[styles.appBar, { paddingTop: insets.top }]}
-        source={require('../../assets/image-background.jpeg')}
-      >
-        <Toolbar appearance="control" onBackPress={props.navigation.goBack} />
-      </ImageBackground>
+    <SafeAreaLayout style={styles.safeArea} insets={SaveAreaInset.TOP}>
+      <Toolbar title="Recuperar Contraseña" onBackPress={navigation.goBack} />
       <Layout style={styles.formContainer}>
         <Formik
           initialValues={ResetPasswordData.empty()}
@@ -53,13 +55,13 @@ export const ResetPasswordScreen = (props) => {
           {renderForm}
         </Formik>
       </Layout>
-    </React.Fragment>
+    </SafeAreaLayout>
   );
 };
 
 const styles = StyleSheet.create({
-  appBar: {
-    height: 192
+  safeArea: {
+    flex: 1
   },
   formContainer: {
     flex: 1,
