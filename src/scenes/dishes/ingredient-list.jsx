@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { List, FAB } from 'react-native-paper';
+import { List /*, Checkbox*/ } from 'react-native-paper';
 import NumericSelector from '../../components/numeric-selector';
 import Layout from '../../components/layout';
+import MarketFab from './market-fab.jsx';
 import { getText } from '../../utils/grocery';
+
+const toDec2 = (value) => (value > 0 ? value.toFixed(2) : value);
 
 const servQuantity = (initServ, currServ) => (quantity) =>
   (quantity / initServ) * currServ;
 
 const calcDiv = (calcQty, divisible) => (quantity) =>
-  divisible ? calcQty(quantity) : Math.round(calcQty(quantity));
+  divisible ? toDec2(calcQty(quantity)) : Math.round(calcQty(quantity));
 
 const IngredientList = ({ dish }) => {
   const [selectedServings, setSelectedServings] = useState(dish.servings || 1);
@@ -40,10 +43,14 @@ const IngredientList = ({ dish }) => {
       />
       <ScrollView contentContainerStyle={styles.list}>
         {ingredients.map((ingredient) => (
-          <List.Item key={ingredient.id} title={getText(ingredient)} />
+          <List.Item
+            key={ingredient.id}
+            title={getText(ingredient)}
+            // right={() => <Checkbox />}
+          />
         ))}
       </ScrollView>
-      <FAB style={styles.fab} icon="cart-plus" />
+      <MarketFab ingredients={dish.ingredients} servings={selectedServings} />
     </Layout>
   );
 };

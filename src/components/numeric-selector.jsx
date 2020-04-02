@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash/noop';
 import times from 'lodash/times';
 import { StyleSheet } from 'react-native';
 import { ToggleButton, Text } from 'react-native-paper';
@@ -23,7 +24,7 @@ const NumericSelector = ({
     )}
     <ToggleButton.Row
       style={styles.buttonGroup}
-      onValueChange={onChange}
+      onValueChange={(value) => (value === null ? noop() : onChange(value))}
       value={selected}
     >
       {times(visibleItems, (i) => i + min).map((i) => (

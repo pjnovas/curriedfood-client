@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 21296,
-  "expoServerNgrokUrl": "https://vj-ktg.anonymous.curriedfood.exp.direct",
-  "packagerNgrokUrl": "https://packager.vj-ktg.anonymous.curriedfood.exp.direct",
-  "ngrokPid": 4532,
+  "packagerPid": 12268,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": 19006
 }

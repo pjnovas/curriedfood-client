@@ -4,6 +4,9 @@ import { TextInput, Caption } from 'react-native-paper';
 import { useFormikContext } from 'formik';
 import Theme from '../theme';
 
+// TODO: Change Caption into HelperText for showing errors
+// https://callstack.github.io/react-native-paper/helper-text.html
+
 export const FormInput = ({ id, ...inputProps }) => {
   const formContext = useFormikContext();
   const { [id]: error } = formContext.errors;
