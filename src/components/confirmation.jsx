@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Portal, Provider, Dialog, Button } from 'react-native-paper';
+import { Dialog, Button } from 'react-native-paper';
 import Theme from '../theme';
 
 const Confirmation = ({
@@ -12,35 +12,29 @@ const Confirmation = ({
   okText,
   loading
 }) => (
-  <Provider>
-    <Portal>
-      <Portal>
-        <Dialog
-          style={styles.layout}
-          visible={visible}
-          dismissable={!loading}
-          onDismiss={onDismiss}
-        >
-          <Dialog.Title style={styles.contentText}>{title}</Dialog.Title>
-          <Dialog.Content>{children}</Dialog.Content>
-          <Dialog.Actions>
-            <Button disabled={loading} onPress={onDismiss}>
-              Cancelar
-            </Button>
-            <Button
-              dark
-              mode="contained"
-              style={styles.okButton}
-              onPress={() => !loading && onConfirm()}
-              loading={loading}
-            >
-              {okText}
-            </Button>
-          </Dialog.Actions>
-        </Dialog>
-      </Portal>
-    </Portal>
-  </Provider>
+  <Dialog
+    style={styles.layout}
+    visible={visible}
+    dismissable={!loading}
+    onDismiss={onDismiss}
+  >
+    <Dialog.Title style={styles.contentText}>{title}</Dialog.Title>
+    <Dialog.Content>{children}</Dialog.Content>
+    <Dialog.Actions>
+      <Button disabled={loading} onPress={onDismiss}>
+        Cancelar
+      </Button>
+      <Button
+        dark
+        mode="contained"
+        style={styles.okButton}
+        onPress={() => !loading && onConfirm()}
+        loading={loading}
+      >
+        {okText}
+      </Button>
+    </Dialog.Actions>
+  </Dialog>
 );
 
 const styles = StyleSheet.create({

@@ -10,12 +10,13 @@ import Theme from '../../theme';
 const MarketFab = ({ ingredients, servings }) => {
   const openShopCart = useNavigateTo(AppRoute.MARKET);
   const [confirmVisible, setConfirmVisible] = useState(false);
-  const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  if (!ingredients.length) return null;
 
   // add useEffect when setConfirmation
   // > fire do a fetch + post for the shopping cart
 
-  if (!ingredients.length) return null;
   return (
     <>
       <FAB
@@ -28,10 +29,10 @@ const MarketFab = ({ ingredients, servings }) => {
         <Confirm
           visible={confirmVisible}
           onConfirm={() => {
-            setSaving(true);
+            setLoading(true);
             // TEST CODE
             setTimeout(() => {
-              setSaving(false);
+              setLoading(false);
               setConfirmVisible(false);
               openShopCart();
             }, 2000);
@@ -39,7 +40,7 @@ const MarketFab = ({ ingredients, servings }) => {
           onDismiss={() => setConfirmVisible(false)}
           title="Enviar al carrito de compras?"
           okText="Enviar"
-          loading={saving}
+          loading={loading}
         >
           <Paragraph
             style={styles.contentText}

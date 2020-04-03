@@ -6,11 +6,17 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["prettier", "react", "react-hooks"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "plugins": ["prettier", "react", "react-hooks", "jest"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:jest/recommended"
   ],
   "settings": {
     "import/resolver": {
@@ -26,12 +32,14 @@
     "console": true,
     "global": true,
     "module": true,
-    "require": true
+    "require": true,
+    "takeSnapshots": true
   },
   "rules": {
     "react/display-name": "off",
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "jest/expect-expect": "off"
   }
 }
