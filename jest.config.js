@@ -5,14 +5,27 @@ module.exports = {
   transform: {
     '^.+\\.(js|ts)x?$': 'babel-jest'
   },
-  setupFiles: ['./jest.helpers.js'],
+  setupFilesAfterEnv: ['./jest.enzyme.js', './jest.helpers.js'],
   transformIgnorePatterns: [
     'node_modules/(?!(react-native' +
       '|react-native-safe-area-view' +
-      '|react-navigation-tabs' +
-      '|react-native-splash-screen' +
-      '|react-native-screens' +
-      '|react-native-reanimated' +
+      // '|@expo\\vector-icons' +
+      // '|expo-font' +
+      // '|expo-asset' +
       ')/)'
-  ]
+  ],
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx}',
+    '!<rootDir>/node_modules/',
+    // Tech Debt
+    '!<rootDir>/src/context/auth-context'
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100
+    }
+  }
 };

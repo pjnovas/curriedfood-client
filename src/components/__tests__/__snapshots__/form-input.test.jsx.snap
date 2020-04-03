@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default 1`] = `
+<Fragment>
+  <withTheme(TextInput)
+    error={true}
+    mode="outlined"
+    type="text"
+  />
+  <Caption
+    style={
+      Object {
+        "color": "#CF6679",
+      }
+    }
+  >
+    BOOM
+  </Caption>
+</Fragment>
+`;

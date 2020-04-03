@@ -1,914 +1,131 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`default 1`] = `null`;
-
-exports[`loading 1`] = `
-<View
-  accessibilityLiveRegion="polite"
-  accessibilityViewIsModal={true}
-  pointerEvents="auto"
+exports[`default 1`] = `
+<withTheme(Dialog)
+  dismissable={true}
   style={
     Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
+      "backgroundColor": "#263238",
     }
   }
 >
-  <View
-    accessible={true}
-    focusable={false}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+  <withTheme(Dialog.Title)
     style={
       Object {
-        "backgroundColor": "rgba(0, 0, 0, 0.5)",
-        "flex": 1,
-        "opacity": 1,
+        "color": "#ffffff",
+        "textAlign": "center",
       }
     }
   />
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
+  <Dialog.Content />
+  <Dialog.Actions>
+    <withTheme(Button)>
+      Cancelar
+    </withTheme(Button)>
+    <withTheme(Button)
+      dark={true}
+      mode="contained"
+      onPress={[Function]}
+      style={
+        Object {
+          "marginHorizontal": 10,
+        }
+      }
+    />
+  </Dialog.Actions>
+</withTheme(Dialog)>
+`;
+
+exports[`loading 1`] = `
+<withTheme(Dialog)
+  dismissable={false}
+  onDismiss={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#263238",
+    }
+  }
+  visible={true}
+>
+  <withTheme(Dialog.Title)
     style={
       Object {
-        "bottom": 0,
-        "justifyContent": "center",
-        "left": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 20,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
+        "color": "#ffffff",
+        "textAlign": "center",
       }
     }
   >
-    <View
+    Title
+  </withTheme(Dialog.Title)>
+  <Dialog.Content>
+    content
+  </Dialog.Content>
+  <Dialog.Actions>
+    <withTheme(Button)
+      disabled={true}
+      onPress={[Function]}
+    >
+      Cancelar
+    </withTheme(Button)>
+    <withTheme(Button)
+      dark={true}
+      loading={true}
+      mode="contained"
+      onPress={[Function]}
       style={
         Object {
-          "backgroundColor": "#263238",
-          "borderRadius": 4,
-          "elevation": 24,
-          "justifyContent": "flex-start",
-          "marginHorizontal": 26,
-          "marginVertical": 0,
-          "opacity": 1,
-          "shadowColor": "#000000",
-          "shadowOffset": Object {
-            "height": 23,
-            "width": 0,
-          },
-          "shadowOpacity": 0.24,
-          "shadowRadius": 24,
+          "marginHorizontal": 10,
         }
       }
     >
-      <Text
-        accessibilityRole="header"
-        accessibilityTraits="header"
-        style={
-          Array [
-            Object {
-              "color": "#000000",
-              "fontFamily": "System",
-              "fontWeight": "400",
-              "textAlign": "left",
-            },
-            Array [
-              Object {
-                "color": "rgba(0, 0, 0, 0.87)",
-                "fontFamily": "System",
-                "fontWeight": "500",
-                "textAlign": "left",
-                "writingDirection": "ltr",
-              },
-              Array [
-                Object {
-                  "fontSize": 20,
-                  "letterSpacing": 0.15,
-                  "lineHeight": 30,
-                  "marginVertical": 2,
-                },
-                Array [
-                  Object {
-                    "marginBottom": 18,
-                    "marginHorizontal": 24,
-                    "marginTop": 22,
-                  },
-                  Object {
-                    "color": "#000000",
-                  },
-                  Object {
-                    "color": "#ffffff",
-                    "textAlign": "center",
-                  },
-                ],
-              ],
-              Array [
-                Object {
-                  "fontSize": 20,
-                  "letterSpacing": 0.15,
-                  "lineHeight": 30,
-                  "marginVertical": 2,
-                },
-                Array [
-                  Object {
-                    "marginBottom": 18,
-                    "marginHorizontal": 24,
-                    "marginTop": 22,
-                  },
-                  Object {
-                    "color": "#000000",
-                  },
-                  Object {
-                    "color": "#ffffff",
-                    "textAlign": "center",
-                  },
-                ],
-              ],
-            ],
-          ]
-        }
-      >
-        Title
-      </Text>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 24,
-              "paddingHorizontal": 24,
-            },
-            undefined,
-          ]
-        }
-      >
-        content
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-              "padding": 8,
-            },
-            undefined,
-          ]
-        }
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "transparent",
-              "borderColor": "transparent",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "elevation": 0,
-              "minWidth": "auto",
-            }
-          }
-        >
-          <View
-            accessibilityRole="button"
-            accessibilityStates={
-              Array [
-                "disabled",
-              ]
-            }
-            accessible={true}
-            focusable={true}
-            isTVSelectable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "overflow": "hidden",
-                },
-                Object {
-                  "borderRadius": 4,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                  },
-                  undefined,
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#000000",
-                      "fontFamily": "System",
-                      "fontWeight": "400",
-                      "textAlign": "left",
-                    },
-                    Array [
-                      Object {
-                        "letterSpacing": 1,
-                        "marginHorizontal": 16,
-                        "marginVertical": 9,
-                        "textAlign": "center",
-                      },
-                      Object {
-                        "marginHorizontal": 8,
-                      },
-                      Object {
-                        "textTransform": "uppercase",
-                      },
-                      Object {
-                        "color": "rgba(0, 0, 0, 0.32)",
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      Object {
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      undefined,
-                    ],
-                  ]
-                }
-              >
-                Cancelar
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "backgroundColor": "#6200ee",
-              "borderColor": "transparent",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "elevation": 2,
-              "marginHorizontal": 10,
-              "minWidth": "auto",
-              "shadowColor": "#000000",
-              "shadowOffset": Object {
-                "height": 0.75,
-                "width": 0,
-              },
-              "shadowOpacity": 0.24,
-              "shadowRadius": 1.5,
-            }
-          }
-        >
-          <View
-            accessibilityRole="button"
-            accessibilityStates={Array []}
-            accessible={true}
-            focusable={true}
-            isTVSelectable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "overflow": "hidden",
-                },
-                Object {
-                  "borderRadius": 4,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                  },
-                  undefined,
-                ]
-              }
-            >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "justifyContent": "center",
-                    },
-                    Object {
-                      "marginLeft": 12,
-                      "marginRight": -4,
-                      "width": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Object {
-                      "height": 16,
-                      "opacity": 1,
-                      "width": 16,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "bottom": 0,
-                        "justifyContent": "center",
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        Object {
-                          "height": 16,
-                          "transform": Array [
-                            Object {
-                              "rotate": "45deg",
-                            },
-                          ],
-                          "width": 16,
-                        }
-                      }
-                    >
-                      <View
-                        collapsable={false}
-                        style={
-                          Object {
-                            "height": 8,
-                            "overflow": "hidden",
-                            "width": 16,
-                          }
-                        }
-                      >
-                        <View
-                          style={
-                            Object {
-                              "height": 16,
-                              "transform": Array [
-                                Object {
-                                  "translateY": 0,
-                                },
-                                Object {
-                                  "rotate": "-165deg",
-                                },
-                              ],
-                              "width": 16,
-                            }
-                          }
-                        >
-                          <View
-                            collapsable={false}
-                            style={
-                              Object {
-                                "height": 8,
-                                "overflow": "hidden",
-                                "width": 16,
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                Object {
-                                  "borderColor": "#ffffff",
-                                  "borderRadius": 8,
-                                  "borderWidth": 1.6,
-                                  "height": 16,
-                                  "width": 16,
-                                }
-                              }
-                            />
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                  <View
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "bottom": 0,
-                        "justifyContent": "center",
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        Object {
-                          "height": 16,
-                          "transform": Array [
-                            Object {
-                              "rotate": "45deg",
-                            },
-                          ],
-                          "width": 16,
-                        }
-                      }
-                    >
-                      <View
-                        collapsable={false}
-                        style={
-                          Object {
-                            "height": 8,
-                            "overflow": "hidden",
-                            "top": 8,
-                            "width": 16,
-                          }
-                        }
-                      >
-                        <View
-                          style={
-                            Object {
-                              "height": 16,
-                              "transform": Array [
-                                Object {
-                                  "translateY": -8,
-                                },
-                                Object {
-                                  "rotate": "345deg",
-                                },
-                              ],
-                              "width": 16,
-                            }
-                          }
-                        >
-                          <View
-                            collapsable={false}
-                            style={
-                              Object {
-                                "height": 8,
-                                "overflow": "hidden",
-                                "width": 16,
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                Object {
-                                  "borderColor": "#ffffff",
-                                  "borderRadius": 8,
-                                  "borderWidth": 1.6,
-                                  "height": 16,
-                                  "width": 16,
-                                }
-                              }
-                            />
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-              <Text
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#000000",
-                      "fontFamily": "System",
-                      "fontWeight": "400",
-                      "textAlign": "left",
-                    },
-                    Array [
-                      Object {
-                        "letterSpacing": 1,
-                        "marginHorizontal": 16,
-                        "marginVertical": 9,
-                        "textAlign": "center",
-                      },
-                      Object {
-                        "marginHorizontal": 8,
-                      },
-                      Object {
-                        "textTransform": "uppercase",
-                      },
-                      Object {
-                        "color": "#ffffff",
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      Object {
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      undefined,
-                    ],
-                  ]
-                }
-              >
-                OK!
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
+      OK!
+    </withTheme(Button)>
+  </Dialog.Actions>
+</withTheme(Dialog)>
 `;
 
 exports[`visible 1`] = `
-<View
-  accessibilityLiveRegion="polite"
-  accessibilityViewIsModal={true}
-  pointerEvents="auto"
+<withTheme(Dialog)
+  dismissable={true}
+  onDismiss={[Function]}
   style={
     Object {
-      "bottom": 0,
-      "left": 0,
-      "position": "absolute",
-      "right": 0,
-      "top": 0,
+      "backgroundColor": "#263238",
     }
   }
+  visible={true}
 >
-  <View
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+  <withTheme(Dialog.Title)
     style={
       Object {
-        "backgroundColor": "rgba(0, 0, 0, 0.5)",
-        "flex": 1,
-        "opacity": 1,
-      }
-    }
-  />
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
-    style={
-      Object {
-        "bottom": 0,
-        "justifyContent": "center",
-        "left": 0,
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 20,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
+        "color": "#ffffff",
+        "textAlign": "center",
       }
     }
   >
-    <View
+    Title
+  </withTheme(Dialog.Title)>
+  <Dialog.Content>
+    content
+  </Dialog.Content>
+  <Dialog.Actions>
+    <withTheme(Button)
+      onPress={[Function]}
+    >
+      Cancelar
+    </withTheme(Button)>
+    <withTheme(Button)
+      dark={true}
+      mode="contained"
+      onPress={[Function]}
       style={
         Object {
-          "backgroundColor": "#263238",
-          "borderRadius": 4,
-          "elevation": 24,
-          "justifyContent": "flex-start",
-          "marginHorizontal": 26,
-          "marginVertical": 0,
-          "opacity": 1,
-          "shadowColor": "#000000",
-          "shadowOffset": Object {
-            "height": 23,
-            "width": 0,
-          },
-          "shadowOpacity": 0.24,
-          "shadowRadius": 24,
+          "marginHorizontal": 10,
         }
       }
     >
-      <Text
-        accessibilityRole="header"
-        accessibilityTraits="header"
-        style={
-          Array [
-            Object {
-              "color": "#000000",
-              "fontFamily": "System",
-              "fontWeight": "400",
-              "textAlign": "left",
-            },
-            Array [
-              Object {
-                "color": "rgba(0, 0, 0, 0.87)",
-                "fontFamily": "System",
-                "fontWeight": "500",
-                "textAlign": "left",
-                "writingDirection": "ltr",
-              },
-              Array [
-                Object {
-                  "fontSize": 20,
-                  "letterSpacing": 0.15,
-                  "lineHeight": 30,
-                  "marginVertical": 2,
-                },
-                Array [
-                  Object {
-                    "marginBottom": 18,
-                    "marginHorizontal": 24,
-                    "marginTop": 22,
-                  },
-                  Object {
-                    "color": "#000000",
-                  },
-                  Object {
-                    "color": "#ffffff",
-                    "textAlign": "center",
-                  },
-                ],
-              ],
-              Array [
-                Object {
-                  "fontSize": 20,
-                  "letterSpacing": 0.15,
-                  "lineHeight": 30,
-                  "marginVertical": 2,
-                },
-                Array [
-                  Object {
-                    "marginBottom": 18,
-                    "marginHorizontal": 24,
-                    "marginTop": 22,
-                  },
-                  Object {
-                    "color": "#000000",
-                  },
-                  Object {
-                    "color": "#ffffff",
-                    "textAlign": "center",
-                  },
-                ],
-              ],
-            ],
-          ]
-        }
-      >
-        Title
-      </Text>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingBottom": 24,
-              "paddingHorizontal": 24,
-            },
-            undefined,
-          ]
-        }
-      >
-        content
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-              "padding": 8,
-            },
-            undefined,
-          ]
-        }
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "transparent",
-              "borderColor": "transparent",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "elevation": 0,
-              "minWidth": "auto",
-            }
-          }
-        >
-          <View
-            accessibilityRole="button"
-            accessibilityStates={Array []}
-            accessible={true}
-            focusable={true}
-            isTVSelectable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "overflow": "hidden",
-                },
-                Object {
-                  "borderRadius": 4,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                  },
-                  undefined,
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#000000",
-                      "fontFamily": "System",
-                      "fontWeight": "400",
-                      "textAlign": "left",
-                    },
-                    Array [
-                      Object {
-                        "letterSpacing": 1,
-                        "marginHorizontal": 16,
-                        "marginVertical": 9,
-                        "textAlign": "center",
-                      },
-                      Object {
-                        "marginHorizontal": 8,
-                      },
-                      Object {
-                        "textTransform": "uppercase",
-                      },
-                      Object {
-                        "color": "#6200ee",
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      Object {
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      undefined,
-                    ],
-                  ]
-                }
-              >
-                Cancelar
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "backgroundColor": "#6200ee",
-              "borderColor": "transparent",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "elevation": 2,
-              "marginHorizontal": 10,
-              "minWidth": "auto",
-              "shadowColor": "#000000",
-              "shadowOffset": Object {
-                "height": 0.75,
-                "width": 0,
-              },
-              "shadowOpacity": 0.24,
-              "shadowRadius": 1.5,
-            }
-          }
-        >
-          <View
-            accessibilityRole="button"
-            accessibilityStates={Array []}
-            accessible={true}
-            focusable={true}
-            isTVSelectable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "overflow": "hidden",
-                },
-                Object {
-                  "borderRadius": 4,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                  },
-                  undefined,
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#000000",
-                      "fontFamily": "System",
-                      "fontWeight": "400",
-                      "textAlign": "left",
-                    },
-                    Array [
-                      Object {
-                        "letterSpacing": 1,
-                        "marginHorizontal": 16,
-                        "marginVertical": 9,
-                        "textAlign": "center",
-                      },
-                      Object {
-                        "marginHorizontal": 8,
-                      },
-                      Object {
-                        "textTransform": "uppercase",
-                      },
-                      Object {
-                        "color": "#ffffff",
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      Object {
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      undefined,
-                    ],
-                  ]
-                }
-              >
-                OK!
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
+      OK!
+    </withTheme(Button)>
+  </Dialog.Actions>
+</withTheme(Dialog)>
 `;
