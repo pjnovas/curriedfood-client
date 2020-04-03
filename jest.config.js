@@ -9,9 +9,7 @@ module.exports = {
   transformIgnorePatterns: [
     'node_modules/(?!(react-native' +
       '|react-native-safe-area-view' +
-      // '|@expo\\vector-icons' +
-      // '|expo-font' +
-      // '|expo-asset' +
+      // '|other-package' +
       ')/)'
   ],
   collectCoverageFrom: [

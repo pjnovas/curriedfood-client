@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#263238",
+        "flex": 1,
+      },
+      Object {
+        "color": "red",
+      },
+    ]
+  }
+>
+  Content
+</View>
+`;

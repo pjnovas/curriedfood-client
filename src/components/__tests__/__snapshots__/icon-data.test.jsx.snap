@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`asChildren 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      },
+      Object {},
+    ]
+  }
+>
+  <Icon
+    color="rgba(255, 255, 255, 0.38)"
+    name="clock"
+    size={20}
+    style={
+      Object {
+        "marginHorizontal": 5,
+      }
+    }
+  />
+  BOOM!
+</View>
+`;
+
+exports[`default 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      },
+      Object {},
+    ]
+  }
+>
+  <Icon
+    color="rgba(255, 255, 255, 0.38)"
+    name="clock"
+    size={20}
+    style={
+      Object {
+        "marginHorizontal": 5,
+      }
+    }
+  />
+  <withTheme(Text)
+    style={
+      Object {
+        "color": "rgba(255, 255, 255, 0.38)",
+      }
+    }
+  >
+    15"
+  </withTheme(Text)>
+</View>
+`;
+
+exports[`reversed 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      },
+      Object {
+        "flexDirection": "row-reverse",
+      },
+    ]
+  }
+>
+  <Icon
+    color="rgba(255, 255, 255, 0.38)"
+    name="clock"
+    size={20}
+    style={
+      Object {
+        "marginHorizontal": 5,
+      }
+    }
+  />
+  <withTheme(Text)
+    style={
+      Object {
+        "color": "rgba(255, 255, 255, 0.38)",
+      }
+    }
+  >
+    15"
+  </withTheme(Text)>
+</View>
+`;

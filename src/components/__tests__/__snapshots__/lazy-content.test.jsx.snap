@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default 1`] = `
+<Layout>
+  <Spinner />
+</Layout>
+`;
+
+exports[`loading 1`] = `
+<Layout>
+  <Spinner />
+</Layout>
+`;
+
+exports[`withData 1`] = `
+<Layout>
+  <View
+    data={
+      Array [
+        "a",
+        "b",
+        "c",
+      ]
+    }
+  />
+</Layout>
+`;
+
+exports[`withError 1`] = `
+<Layout>
+  <withTheme(Text)>
+    Error: 
+    "Boom!"
+  </withTheme(Text)>
+</Layout>
+`;
