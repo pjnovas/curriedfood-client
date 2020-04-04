@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { TabView, TabBar } from 'react-native-tab-view';
 import { Paragraph, Divider } from 'react-native-paper';
-import {
-  SafeAreaLayout,
-  SaveAreaInset
-} from '../../components/safe-area-layout';
-import Theme from '../../theme';
-import { Toolbar } from '../../components/toolbar';
-import Layout from '../../components/layout';
-import { useNavigateBack } from '../../hooks/navigation';
+
+import Theme from 'theme';
+
+import { SafeAreaLayout, SaveAreaInset } from 'components/safe-area-layout';
+import { Toolbar } from 'components/toolbar';
+import Layout from 'components/layout';
+import { useNavigateBack } from 'hooks/navigation';
 
 import IngredientList from './ingredient-list';
 import DishDuration from './dish-duration';

@@ -2,14 +2,13 @@ import React from 'react';
 import get from 'lodash/get';
 import { StyleSheet } from 'react-native';
 import { TabBar } from 'react-native-tab-view';
-import Theme from '../../theme';
-import Icon from '../../components/icon';
-import { useAuth } from '../../context/auth-context';
-import {
-  SafeAreaLayout,
-  SaveAreaInset
-} from '../../components/safe-area-layout';
-import { Toolbar } from '../../components/toolbar';
+
+import Theme from 'theme';
+
+import Icon from 'components/icon';
+import { useAuth } from 'context/auth-context';
+import { SafeAreaLayout, SaveAreaInset } from 'components/safe-area-layout';
+import { Toolbar } from 'components/toolbar';
 
 const menu = [
   { title: 'About', icon: 'information-outline' },

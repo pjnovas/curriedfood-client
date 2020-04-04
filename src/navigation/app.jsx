@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
-import { useAuth } from '../context/auth-context';
+import { useAuth } from 'context/auth-context';
 
 import { AuthNavigator } from './auth';
 import { HomeNavigator } from './home';

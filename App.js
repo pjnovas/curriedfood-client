@@ -4,10 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as PaperProvider } from 'react-native-paper';
 
-import theme from './src/theme';
-import { AppNavigator } from './src/navigation/app';
-import { AuthProvider } from './src/context/auth-context';
-import ErrorBoundary from './src/components/error-boundary';
+import theme from 'theme';
+import { AppNavigator } from 'navigation/app';
+import { AuthProvider } from 'context/auth-context';
+import ErrorBoundary from 'components/error-boundary';
 
 export default () => (
   <PaperProvider theme={theme}>

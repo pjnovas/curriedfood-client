@@ -1,8 +1,9 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { List } from 'react-native-paper';
-import { AppRoute } from '../../navigation/app-routes';
-import { useNavigateTo } from '../../hooks/navigation';
+import { AppRoute } from 'navigation/app-routes';
+import { useNavigateTo } from 'hooks/navigation';
+
 import DishDuration from './dish-duration';
 
 const DishList = (props) => {

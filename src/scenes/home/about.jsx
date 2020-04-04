@@ -1,12 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Divider, Text } from 'react-native-paper';
-import Layout from '../../components/layout';
-import { Toolbar } from '../../components/toolbar';
-import {
-  SafeAreaLayout,
-  SaveAreaInset
-} from '../../components/safe-area-layout';
+import Layout from 'components/layout';
+import { Toolbar } from 'components/toolbar';
+import { SafeAreaLayout, SaveAreaInset } from 'components/safe-area-layout';
 
 export const AboutScreen = (props) => (
   <SafeAreaLayout style={styles.safeArea} insets={SaveAreaInset.TOP}>

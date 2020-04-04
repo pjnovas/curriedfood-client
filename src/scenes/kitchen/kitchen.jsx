@@ -1,8 +1,8 @@
 import React from 'react';
 import GroceriesList from './grocery-list';
-import { useAPI, extractData } from '../../hooks/service';
-import { usePlace } from '../../context/auth-context';
-import LazyContent from '../../components/lazy-content';
+import { useAPI, extractData } from 'hooks/service';
+import { usePlace } from 'context/auth-context';
+import LazyContent from 'components/lazy-content';
 
 const fromGroceries = extractData('data[0].groceries');
 

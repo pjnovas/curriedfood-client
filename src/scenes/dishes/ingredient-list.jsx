@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { List /*, Checkbox*/ } from 'react-native-paper';
-import NumericSelector from '../../components/numeric-selector';
-import Layout from '../../components/layout';
+
+import NumericSelector from 'components/numeric-selector';
+import Layout from 'components/layout';
+import { getText } from 'utils/grocery';
+
 import MarketFab from './market-fab.jsx';
-import { getText } from '../../utils/grocery';
 
 const toDec2 = (value) => (value > 0 ? value.toFixed(2) : value);
 

@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Button, Caption, Title, Colors } from 'react-native-paper';
 import { Formik } from 'formik';
-import { AppRoute } from '../../navigation/app-routes';
-import Layout from '../../components/layout';
-import Theme from '../../theme';
-import { FormInput } from '../../components/form-input';
-import { SignInData, SignInSchema } from '../../data/sign-in.model';
+import { AppRoute } from 'navigation/app-routes';
+import Layout from 'components/layout';
+import Theme from 'theme';
+import { FormInput } from 'components/form-input';
+import { SignInData, SignInSchema } from 'data/sign-in.model.ts';
 
-import { useAuth } from '../../context/auth-context';
+import { useAuth } from 'context/auth-context';
 
 export const SignInScreen = ({ navigation }) => {
   const [state, { signIn }] = useAuth();

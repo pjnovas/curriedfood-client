@@ -1,8 +1,8 @@
 import React /*, { useCallback }*/ from 'react';
 import ShopGroceriesList from './shop-grocery-list';
-import { useAPI, extractData } from '../../hooks/service';
-import { usePlace } from '../../context/auth-context';
-import LazyContent from '../../components/lazy-content';
+import { useAPI, extractData } from 'hooks/service';
+import { usePlace } from 'context/auth-context';
+import LazyContent from 'components/lazy-content';
 // import { useFocusEffect } from '@react-navigation/native';
 
 const fromGroceries = extractData('data[0].groceries');

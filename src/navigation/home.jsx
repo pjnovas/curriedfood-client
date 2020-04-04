@@ -5,11 +5,11 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 import { ProfileNavigator } from './profile';
 import { AppRoute } from './app-routes';
-import { AboutScreen, HomeTabBar } from '../scenes/home';
+import { AboutScreen, HomeTabBar } from 'scenes/home';
 
-import { DishDetailsScreen, DishesScreen } from '../scenes/dishes';
-import { KitchenScreen } from '../scenes/kitchen';
-import { ShoppingListScreen } from '../scenes/market';
+import { DishDetailsScreen, DishesScreen } from 'scenes/dishes';
+import { KitchenScreen } from 'scenes/kitchen';
+import { ShoppingListScreen } from 'scenes/market';
 
 const Stack = createStackNavigator();
 const TopTab = createMaterialTopTabNavigator();

@@ -1,19 +1,16 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import {
-  SafeAreaLayout,
-  SaveAreaInset
-} from '../../components/safe-area-layout';
+import { SafeAreaLayout, SaveAreaInset } from 'components/safe-area-layout';
 import { Button } from 'react-native-paper';
 import { Formik } from 'formik';
-import Layout from '../../components/layout';
-import { AppRoute } from '../../navigation/app-routes';
-import { FormInput } from '../../components/form-input';
-import { Toolbar } from '../../components/toolbar';
+import Layout from 'components/layout';
+import { AppRoute } from 'navigation/app-routes';
+import { FormInput } from 'components/form-input';
+import { Toolbar } from 'components/toolbar';
 import {
   ResetPasswordData,
   ResetPasswordSchema
-} from '../../data/reset-password.model';
+} from 'data/reset-password.model.ts';
 
 export const ResetPasswordScreen = ({ navigation }) => {
   const onFormSubmit = (/*values*/) => {

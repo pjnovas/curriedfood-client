@@ -3,7 +3,7 @@ import get from 'lodash/get';
 import axios from 'axios';
 import { AsyncStorage } from 'react-native';
 
-import Config from '../config';
+import Config from 'config.json';
 
 const AuthContext = React.createContext();
 

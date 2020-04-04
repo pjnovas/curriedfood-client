@@ -1,16 +1,15 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import {
-  SafeAreaLayout,
-  SaveAreaInset
-} from '../../components/safe-area-layout';
 import { Formik } from 'formik';
 import { Button } from 'react-native-paper';
-import Layout from '../../components/layout';
-import { AppRoute } from '../../navigation/app-routes';
-import { Toolbar } from '../../components/toolbar';
-import { FormInput } from '../../components/form-input';
-import { SignUpData, SignUpSchema } from '../../data/sign-up.model';
+
+import { AppRoute } from 'navigation/app-routes';
+import { SafeAreaLayout, SaveAreaInset } from 'components/safe-area-layout';
+import Layout from 'components/layout';
+import { Toolbar } from 'components/toolbar';
+import { FormInput } from 'components/form-input';
+
+import { SignUpData, SignUpSchema } from 'data/sign-up.model.ts';
 
 export const SignUpScreen = ({ navigation }) => {
   const onFormSubmit = (/*values*/) => {

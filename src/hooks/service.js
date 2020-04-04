@@ -2,8 +2,8 @@ import { useAxios } from 'use-axios-hooks';
 import get from 'lodash/get';
 import curry from 'lodash/curry';
 
-import { useAuth } from '../context/auth-context';
-import Config from '../config';
+import { useAuth } from 'context/auth-context';
+import Config from 'config.json';
 
 export const extractData = curry((dataProp, [{ data, ...props }]) => ({
   data: get(data, dataProp, []),

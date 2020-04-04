@@ -16,7 +16,9 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:jest/recommended"
+    "plugin:jest/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "settings": {
     "import/resolver": {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { List } from 'react-native-paper';
-import { getText } from '../../utils/grocery';
+import { getText } from 'utils/grocery';
 
 const GroceryList = (props) => (
   <ScrollView>

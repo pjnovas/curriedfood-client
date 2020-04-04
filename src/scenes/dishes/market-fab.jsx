@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { FAB, Paragraph } from 'react-native-paper';
 
-import { AppRoute } from '../../navigation/app-routes';
-import { useNavigateTo } from '../../hooks/navigation';
-import Confirm from '../../components/confirmation';
-import Theme from '../../theme';
+import { AppRoute } from 'navigation/app-routes';
+import { useNavigateTo } from 'hooks/navigation';
+import Confirm from 'components/confirmation';
+import Theme from 'theme';
 
 const MarketFab = ({ ingredients, servings }) => {
   const openShopCart = useNavigateTo(AppRoute.MARKET);
