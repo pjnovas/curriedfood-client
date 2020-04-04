@@ -7,47 +7,53 @@ import { useNavigateTo } from 'hooks/navigation';
 import Confirm from 'components/confirmation';
 import Theme from 'theme';
 
-const MarketFab = ({ ingredients, servings }) => {
+export const ConfirmDialog = ({ ingredients, servings, onDismiss }) => {
   const openShopCart = useNavigateTo(AppRoute.MARKET);
-  const [confirmVisible, setConfirmVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  if (!ingredients.length) return null;
 
   // add useEffect when setConfirmation
   // > fire do a fetch + post for the shopping cart
 
   return (
-    <>
-      <FAB
-        style={styles.fab}
-        disabled={confirmVisible}
-        icon="cart-plus"
-        onPress={() => setConfirmVisible(true)}
-      />
-      {confirmVisible && (
-        <Confirm
-          visible={confirmVisible}
-          onConfirm={() => {
-            setLoading(true);
-            // TEST CODE
-            setTimeout(() => {
-              setLoading(false);
-              setConfirmVisible(false);
-              openShopCart();
-            }, 2000);
-          }}
-          onDismiss={() => setConfirmVisible(false)}
-          title="Enviar al carrito de compras?"
-          okText="Enviar"
-          loading={loading}
-        >
-          <Paragraph
-            style={styles.contentText}
-          >{`Se agregarán ${ingredients.length} Ingredientes para ${servings} Porciones`}</Paragraph>
-        </Confirm>
-      )}
-    </>
+    <Confirm
+      visible
+      onConfirm={() => {
+        setLoading(true);
+        // TEST CODE
+        setTimeout(() => {
+          setLoading(false);
+          onDismiss();
+          openShopCart();
+        }, 2000);
+      }}
+      title="Enviar al carrito de compras?"
+      okText="Enviar"
+      onDismiss={onDismiss}
+      loading={loading}
+    >
+      <Paragraph
+        style={styles.contentText}
+      >{`Se agregarán ${ingredients.length} Ingredientes para ${servings} Porciones`}</Paragraph>
+    </Confirm>
+  );
+};
+
+const FabButton = ({ ingredients, servings }) => {
+  const [confirmVisible, setConfirmVisible] = useState(false);
+
+  if (!ingredients.length) return null;
+
+  return confirmVisible ? (
+    <ConfirmDialog
+      {...{ ingredients, servings, onDismiss: () => setConfirmVisible(false) }}
+    />
+  ) : (
+    <FAB
+      style={styles.fab}
+      disabled={confirmVisible}
+      icon="cart-plus"
+      onPress={() => setConfirmVisible(true)}
+    />
   );
 };
 
@@ -64,4 +70,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MarketFab;
+export default FabButton;

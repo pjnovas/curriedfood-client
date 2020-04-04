@@ -5,8 +5,13 @@ import { shallow } from 'enzyme';
 import noop from 'lodash/noop';
 import isFunction from 'lodash/isFunction';
 
-global.takeSnapshot = (wrapper) => {
+global.takeSnapshotFrom = (wrapper) => {
   expect(EnzymeToJson(wrapper)).toMatchSnapshot();
+};
+
+global.takeSnapshot = (props, Component, options) => {
+  const wrapper = shallow(<Component {...props} />, options);
+  global.takeSnapshotFrom(wrapper);
 };
 
 global.takeSnapshots = (cases, Component, { dive, ...options } = {}) => {
@@ -49,14 +54,13 @@ global.takeSnapshots = (cases, Component, { dive, ...options } = {}) => {
         );
 
         component = wrapper.children().first().dive();
+        global.takeSnapshotFrom(component);
       } else {
-        component = shallow(<Component {...result.props} />, {
+        global.takeSnapshot(result.props, Component, {
           ...options,
           ...result.options
         });
       }
-
-      global.takeSnapshot(component);
 
       result.post();
     })

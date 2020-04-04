@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmDialog default 1`] = `
+<Confirmation
+  loading={false}
+  okText="Enviar"
+  onConfirm={[Function]}
+  title="Enviar al carrito de compras?"
+  visible={true}
+>
+  <Paragraph
+    style={
+      Object {
+        "color": "#ffffff",
+        "textAlign": "center",
+      }
+    }
+  >
+    Se agregarán 2 Ingredientes para 4 Porciones
+  </Paragraph>
+</Confirmation>
+`;
+
+exports[`MarketFab renders a ConfirmDialog when FAB is clicked 1`] = `
+<ConfirmDialog
+  ingredients={
+    Array [
+      Object {
+        "id": 1,
+        "product": Object {
+          "divisible": false,
+          "name": "Eggs",
+        },
+        "quantity": 3,
+        "unit": Object {
+          "code": "un",
+        },
+      },
+      Object {
+        "id": 2,
+        "product": Object {
+          "divisible": true,
+          "name": "Olives",
+        },
+        "quantity": 150,
+        "unit": Object {
+          "code": "gr",
+        },
+      },
+    ]
+  }
+  onDismiss={[Function]}
+  servings={4}
+/>
+`;
+
+exports[`MarketFab renders a FAB Button when confirm dialog is dismissed 1`] = `
+<withTheme(FAB)
+  disabled={false}
+  icon="cart-plus"
+  onPress={[Function]}
+  style={
+    Object {
+      "bottom": 0,
+      "margin": 16,
+      "position": "absolute",
+      "right": 0,
+    }
+  }
+/>
+`;
+
+exports[`MarketFab renders a FAB Button with ingredients 1`] = `
+<withTheme(FAB)
+  disabled={false}
+  icon="cart-plus"
+  onPress={[Function]}
+  style={
+    Object {
+      "bottom": 0,
+      "margin": 16,
+      "position": "absolute",
+      "right": 0,
+    }
+  }
+/>
+`;
+
+exports[`MarketFab renders nothing with no ingredients 1`] = `""`;
