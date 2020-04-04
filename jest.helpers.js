@@ -9,14 +9,14 @@ global.takeSnapshot = (wrapper) => {
   expect(EnzymeToJson(wrapper)).toMatchSnapshot();
 };
 
-global.takeSnapshots = (cases, Component) => {
+global.takeSnapshots = (cases, Component, { dive, ...options } = {}) => {
   Object.keys(cases).map((name) =>
     test(name, () => {
       let result = {
         pre: noop,
         props: cases[name],
         post: noop,
-        options: noop()
+        options: {}
       };
 
       if (isFunction(cases[name])) {
@@ -28,10 +28,33 @@ global.takeSnapshots = (cases, Component) => {
 
       result.pre();
 
-      const component = shallow(
-        <Component {...result.props} />,
-        result.options
-      );
+      let component;
+
+      if (dive) {
+        const { wrappingComponent, wrappingComponentProps, ...opts } = options;
+        if (!wrappingComponent) {
+          throw new Error(
+            'expected wrappingComponent in takeSnapshots options'
+          );
+        }
+
+        const wrapper = shallow(
+          <wrappingComponent {...wrappingComponentProps}>
+            <Component {...result.props} />
+          </wrappingComponent>,
+          {
+            ...opts,
+            ...result.options
+          }
+        );
+
+        component = wrapper.children().first().dive();
+      } else {
+        component = shallow(<Component {...result.props} />, {
+          ...options,
+          ...result.options
+        });
+      }
 
       global.takeSnapshot(component);
 
