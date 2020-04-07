@@ -2,7 +2,7 @@
 
 exports[`ConfirmDialog default 1`] = `
 <Confirmation
-  loading={false}
+  loading={true}
   okText="Enviar"
   onConfirm={[Function]}
   title="Enviar al carrito de compras?"
@@ -16,7 +16,7 @@ exports[`ConfirmDialog default 1`] = `
       }
     }
   >
-    Se agregarán 2 Ingredientes para 4 Porciones
+    Se agregarán 2 Ingredientes
   </Paragraph>
 </Confirmation>
 `;
@@ -50,7 +50,6 @@ exports[`MarketFab renders a ConfirmDialog when FAB is clicked 1`] = `
     ]
   }
   onDismiss={[Function]}
-  servings={4}
 />
 `;
 

@@ -52,7 +52,7 @@ const IngredientList = ({ dish }) => {
           />
         ))}
       </ScrollView>
-      <MarketFab ingredients={dish.ingredients} servings={selectedServings} />
+      <MarketFab ingredients={ingredients} servings={selectedServings} />
     </Layout>
   );
 };

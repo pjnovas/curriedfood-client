@@ -2,50 +2,37 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { FAB, Paragraph } from 'react-native-paper';
 
-import { AppRoute } from 'navigation/app-routes';
-import { useNavigateTo } from 'hooks/navigation';
+import { useMarket } from 'hooks/market';
 import Confirm from 'components/confirmation';
 import Theme from 'theme';
 
-export const ConfirmDialog = ({ ingredients, servings, onDismiss }) => {
-  const openShopCart = useNavigateTo(AppRoute.MARKET);
-  const [loading, setLoading] = useState(false);
-
-  // add useEffect when setConfirmation
-  // > fire do a fetch + post for the shopping cart
+export const ConfirmDialog = ({ ingredients, onDismiss }) => {
+  const [state, { addFrom }] = useMarket();
 
   return (
     <Confirm
       visible
-      onConfirm={() => {
-        setLoading(true);
-        // TEST CODE
-        setTimeout(() => {
-          setLoading(false);
-          onDismiss();
-          openShopCart();
-        }, 2000);
-      }}
+      onConfirm={() => addFrom(ingredients)}
       title="Enviar al carrito de compras?"
       okText="Enviar"
       onDismiss={onDismiss}
-      loading={loading}
+      loading={state.status !== 'idle'}
     >
       <Paragraph
         style={styles.contentText}
-      >{`Se agregarán ${ingredients.length} Ingredientes para ${servings} Porciones`}</Paragraph>
+      >{`Se agregarán ${ingredients.length} Ingredientes`}</Paragraph>
     </Confirm>
   );
 };
 
-const FabButton = ({ ingredients, servings }) => {
+const FabButton = ({ ingredients }) => {
   const [confirmVisible, setConfirmVisible] = useState(false);
 
   if (!ingredients.length) return null;
 
   return confirmVisible ? (
     <ConfirmDialog
-      {...{ ingredients, servings, onDismiss: () => setConfirmVisible(false) }}
+      {...{ ingredients, onDismiss: () => setConfirmVisible(false) }}
     />
   ) : (
     <FAB

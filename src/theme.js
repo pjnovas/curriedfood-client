@@ -1,6 +1,6 @@
 import { DarkTheme, Colors } from 'react-native-paper';
 
-export const colors = {
+const colors = {
   ...DarkTheme.colors,
   primary: Colors.pink800,
   accent: Colors.purpleA700,

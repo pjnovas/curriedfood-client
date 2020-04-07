@@ -3,10 +3,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { FAB } from 'react-native-paper';
 
+import { useMarket } from 'hooks/market';
 import MarketFab, { ConfirmDialog } from '../market-fab';
-// import { useNavigateTo } from 'hooks/navigation';
 
 jest.mock('hooks/navigation');
+jest.mock('hooks/market', () => ({
+  useMarket: jest.fn()
+}));
 
 const props = {
   ingredients: [
@@ -63,6 +66,8 @@ describe('MarketFab', () => {
 });
 
 describe('ConfirmDialog', () => {
+  useMarket.mockImplementation(() => [{}, { mergeList: jest.fn() }]);
+
   takeSnapshots(
     {
       default: props

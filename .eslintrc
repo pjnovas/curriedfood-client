@@ -35,6 +35,7 @@
     "global": true,
     "module": true,
     "require": true,
+    "Promise": true,
     // Jest Helpers
     "takeSnapshotFrom": true,
     "takeSnapshot": true,
