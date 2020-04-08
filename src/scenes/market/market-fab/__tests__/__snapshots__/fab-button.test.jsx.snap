@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmDialog when visible 1`] = `
+<Component
+  ingredients={
+    Array [
+      Object {
+        "id": 1,
+        "product": Object {
+          "divisible": false,
+          "name": "Eggs",
+          "unit": "un",
+        },
+        "quantity": 3,
+      },
+      Object {
+        "id": 2,
+        "product": Object {
+          "divisible": true,
+          "name": "Olives",
+          "unit": "gr",
+        },
+        "quantity": 150,
+      },
+    ]
+  }
+/>
+`;
+
+exports[`default 1`] = `""`;
+
+exports[`with ingredients 1`] = `
+<withTheme(FAB)
+  icon="cart-plus"
+  style={
+    Object {
+      "bottom": 0,
+      "margin": 16,
+      "position": "absolute",
+      "right": 0,
+    }
+  }
+/>
+`;

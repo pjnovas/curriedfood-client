@@ -4,11 +4,10 @@ import { List /*, Checkbox*/ } from 'react-native-paper';
 
 import NumericSelector from 'components/numeric-selector';
 import Layout from 'components/layout';
+import MarketFab from 'scenes/market/market-fab';
 import { getText } from 'utils/grocery';
 
-import MarketFab from './market-fab.jsx';
-
-const toDec2 = (value) => (value > 0 ? value.toFixed(2) : value);
+const toDec2 = (value) => Number(value > 0 ? value.toFixed(2) : value);
 
 const servQuantity = (initServ, currServ) => (quantity) =>
   (quantity / initServ) * currServ;
@@ -60,12 +59,6 @@ const IngredientList = ({ dish }) => {
 const styles = StyleSheet.create({
   list: {
     paddingBottom: 80
-  },
-  fab: {
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0
   }
 });
 

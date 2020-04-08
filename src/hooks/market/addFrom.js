@@ -11,7 +11,8 @@ const sumQuantity = (items) => ({ product, quantity, ...item }) => ({
   ...item,
   product,
   quantity:
-    get(find(items, ['product.id', product.id]), 'quantity', 0) + quantity
+    Number(get(find(items, ['product.id', product.id]), 'quantity', 0)) +
+    Number(quantity)
 });
 
 const appendNewOnes = (all) => (newOnes, item) =>

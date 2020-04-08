@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default 1`] = `
+<Confirmation
+  okText="Enviar"
+  title="Enviar al carrito de compras?"
+  visible={true}
+>
+  <Paragraph
+    style={
+      Object {
+        "color": "#ffffff",
+        "textAlign": "center",
+      }
+    }
+  >
+    Se agregarán 0 Ingredientes
+  </Paragraph>
+</Confirmation>
+`;
+
+exports[`loading 1`] = `
+<Confirmation
+  loading={true}
+  okText="Enviar"
+  title="Enviar al carrito de compras?"
+  visible={true}
+>
+  <Paragraph
+    style={
+      Object {
+        "color": "#ffffff",
+        "textAlign": "center",
+      }
+    }
+  >
+    Se agregarán 2 Ingredientes
+  </Paragraph>
+</Confirmation>
+`;
+
+exports[`withIngredients 1`] = `
+<Confirmation
+  okText="Enviar"
+  title="Enviar al carrito de compras?"
+  visible={true}
+>
+  <Paragraph
+    style={
+      Object {
+        "color": "#ffffff",
+        "textAlign": "center",
+      }
+    }
+  >
+    Se agregarán 2 Ingredientes
+  </Paragraph>
+</Confirmation>
+`;
