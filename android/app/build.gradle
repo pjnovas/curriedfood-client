@@ -143,6 +143,7 @@ android {
 }
 
 def jscFlavor = 'org.webkit:android-jsc:+'
+// NOT WORKING: >> def jscFlavor = 'org.webkit:android-jsc-intl:+' // support for toLocaleString()
 
 def enableHermes = project.ext.react.get("enableHermes", false);
 

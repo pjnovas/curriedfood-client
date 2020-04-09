@@ -1,3 +1,5 @@
+import flow from 'lodash/flow';
+
 export const unitText = {
   un: '',
   cu: 'cucharadas de',
@@ -13,16 +15,29 @@ export const unitText = {
   xy: 'a gusto'
 };
 
+const convert = flow(
+  Number,
+  (qty) => qty.toFixed(2),
+  (qty) => qty.replace('.00', ''),
+  (qty) => qty.replace('.', ',')
+);
+
+// Not supported on android
+// Number(qty).toLocaleString('es-AR', {
+//   minimumFractionDigits: 0,
+//   maximumFractionDigits: 2
+// });
+
 export const getText = ({
   product: { name, unit },
   quantity,
   alt_quantity,
   alt_unit
 }) => {
-  let text = `${quantity} ${unitText[unit] || ''} ${name}`;
+  let text = `${convert(quantity)} ${unitText[unit] || ''} ${name}`;
 
   if (alt_quantity) {
-    text += ` (${alt_quantity} ${unitText[alt_unit]})`;
+    text += ` (${convert(alt_quantity)} ${unitText[alt_unit]})`;
   }
 
   return text;

@@ -9,7 +9,11 @@ import { AboutScreen, HomeTabBar } from 'scenes/home';
 
 import { DishDetailsScreen, DishesScreen } from 'scenes/dishes';
 import { KitchenScreen } from 'scenes/kitchen';
-import { ShoppingListScreen } from 'scenes/market';
+import {
+  ShoppingListScreen,
+  IngredientEdit,
+  IngredientNew
+} from 'scenes/market';
 
 const Stack = createStackNavigator();
 const TopTab = createMaterialTopTabNavigator();
@@ -45,6 +49,8 @@ export const HomeNavigator = () => (
       name={AppRoute.DISHES_DETAILS}
       component={DishDetailsScreen}
     />
+    <Stack.Screen name={AppRoute.GROCERIES_EDIT} component={IngredientEdit} />
+    <Stack.Screen name={AppRoute.GROCERIES_NEW} component={IngredientNew} />
     <Stack.Screen name={AppRoute.PROFILE} component={ProfileNavigator} />
     <Stack.Screen name={AppRoute.ABOUT} component={AboutScreen} />
   </Stack.Navigator>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import get from 'lodash/get';
 import { TextInput, Caption } from 'react-native-paper';
 import { useFormikContext } from 'formik';
 import Theme from '../theme';
@@ -10,11 +11,13 @@ import Theme from '../theme';
 export const FormInput = ({ id, ...inputProps }) => {
   const formContext = useFormikContext();
   const { [id]: error } = formContext.errors;
+  const value = get(formContext, 'values[id]', '');
 
   return (
     <>
       <TextInput
         {...inputProps}
+        value={String(value)}
         error={!!error}
         onChangeText={formContext.handleChange(id)}
         mode="outlined"

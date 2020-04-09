@@ -7,13 +7,11 @@ import Layout from 'components/layout';
 import MarketFab from 'scenes/market/market-fab';
 import { getText } from 'utils/grocery';
 
-const toDec2 = (value) => Number(value > 0 ? value.toFixed(2) : value);
-
 const servQuantity = (initServ, currServ) => (quantity) =>
   (quantity / initServ) * currServ;
 
 const calcDiv = (calcQty, divisible) => (quantity) =>
-  divisible ? toDec2(calcQty(quantity)) : Math.round(calcQty(quantity));
+  divisible ? calcQty(quantity) : Math.round(calcQty(quantity));
 
 const IngredientList = ({ dish }) => {
   const [selectedServings, setSelectedServings] = useState(dish.servings || 1);
