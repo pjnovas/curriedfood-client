@@ -1,13 +1,22 @@
 import React from 'react';
-import GroceriesList from './grocery-list';
-import { useAPI, extractData } from 'hooks/service';
-import { usePlace } from 'context/auth-context';
-import LazyContent from 'components/lazy-content';
+import get from 'lodash/get';
 
-const fromGroceries = extractData('data[0].groceries');
+import { useRequestSWR } from 'hooks/service';
+import LazyContent from 'components/lazy-content';
+import GroceriesList from './grocery-list';
 
 export const KitchenScreen = () => {
-  const placeId = usePlace();
-  const myGroceries = useAPI(`kitchens?place=${placeId}`);
-  return <LazyContent View={GroceriesList} {...fromGroceries(myGroceries)} />;
+  const result = useRequestSWR(
+    {
+      url: '/kitchens'
+    },
+    { withPlace: true }
+  );
+
+  return (
+    <LazyContent
+      View={GroceriesList}
+      {...{ ...result, data: get(result, 'data[0].groceries') }}
+    />
+  );
 };

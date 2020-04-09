@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`asBar 1`] = `
+<withTheme(ProgressBar)
+  animating={true}
+  color="#ad1457"
+  indeterminate={true}
+/>
+`;
+
+exports[`default 1`] = `
+<withTheme(ActivityIndicator)
+  animating={true}
+  color="#ad1457"
+/>
+`;

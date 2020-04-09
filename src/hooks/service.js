@@ -1,5 +1,5 @@
+import useSWR from 'swr';
 import axios from 'axios';
-import { useAxios } from 'use-axios-hooks';
 import get from 'lodash/get';
 import curry from 'lodash/curry';
 
@@ -18,32 +18,6 @@ const createAuthOptions = ({ jwt }, url) => ({
     Authorization: `Bearer ${jwt}`
   }
 });
-
-export const useAuthOptions = (url) => {
-  const [state] = useAuth();
-  return createAuthOptions(state, url);
-};
-
-export const useAxiosWithAuth = (uri, options) =>
-  useAxios({
-    ...useAuthOptions(uri),
-    ...options
-  });
-
-// TODO: remove this into "useRequest" with a "Sync" option
-export const useAPI = (uri, options) => {
-  const [, { signOut }] = useAuth();
-  const result = useAxiosWithAuth(uri, options);
-
-  const [{ error }] = result;
-  if (get(error, 'response.statusCode') === 403) {
-    // if has token expired
-    console.log(error);
-    signOut();
-  }
-
-  return result;
-};
 
 export const useRequest = ({ withPlace, onError }) => {
   const [state, { signOut }] = useAuth();
@@ -67,5 +41,45 @@ export const useRequest = ({ withPlace, onError }) => {
 
       onError(error.response ? error.response : error);
     }
+  };
+};
+
+export const useRequestSWR = (
+  request,
+  { initialData, withPlace, ...config } = {}
+) => {
+  const [state /*, { signOut }*/] = useAuth();
+  const placeID = usePlace();
+
+  const req = {
+    ...createAuthOptions(state),
+    ...(request || {}),
+    params: {
+      place: withPlace && placeID,
+      ...request.params
+    }
+  };
+
+  const { data: response, error, isValidating, mutate, revalidate } = useSWR(
+    request && JSON.stringify(req),
+    () => axios(request ? req : {}),
+    {
+      ...config,
+      initialData: initialData && {
+        status: 200,
+        statusText: 'InitialData',
+        headers: {},
+        data: initialData
+      }
+    }
+  );
+
+  return {
+    data: response && response.data,
+    response,
+    error,
+    isValidating,
+    mutate,
+    revalidate
   };
 };

@@ -1,19 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`default 1`] = `
-<Layout>
-  <Spinner />
-</Layout>
+<Layout
+  style={
+    Object {
+      "paddingTop": 4,
+    }
+  }
+/>
 `;
 
 exports[`loading 1`] = `
-<Layout>
-  <Spinner />
+<Layout
+  style={
+    Object {
+      "paddingTop": 0,
+    }
+  }
+>
+  <Spinner
+    bar={true}
+  />
 </Layout>
 `;
 
 exports[`withData 1`] = `
-<Layout>
+<Layout
+  style={
+    Object {
+      "paddingTop": 4,
+    }
+  }
+>
   <View
     data={
       Array [
@@ -27,7 +45,13 @@ exports[`withData 1`] = `
 `;
 
 exports[`withError 1`] = `
-<Layout>
+<Layout
+  style={
+    Object {
+      "paddingTop": 4,
+    }
+  }
+>
   <withTheme(Text)>
     Error: 
     "Boom!"

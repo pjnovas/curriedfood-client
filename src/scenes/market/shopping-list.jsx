@@ -1,23 +1,22 @@
-import React /*, { useCallback }*/ from 'react';
-import ShopGroceriesList from './shop-grocery-list';
-import { useAPI, extractData } from 'hooks/service';
-import { usePlace } from 'context/auth-context';
-import LazyContent from 'components/lazy-content';
-// import { useFocusEffect } from '@react-navigation/native';
+import React from 'react';
+import get from 'lodash/get';
 
-const fromGroceries = extractData('data[0].groceries');
+import { useRequestSWR } from 'hooks/service';
+import LazyContent from 'components/lazy-content';
+import ShopGroceriesList from './shop-grocery-list';
 
 export const ShoppingListScreen = () => {
-  const placeId = usePlace();
-  const myShoppingList = useAPI(`shopping-lists?place=${placeId}`);
-
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     // TODO: re-fetch shopping list
-  //   }, [])
-  // );
+  const result = useRequestSWR(
+    {
+      url: '/shopping-lists'
+    },
+    { withPlace: true }
+  );
 
   return (
-    <LazyContent View={ShopGroceriesList} {...fromGroceries(myShoppingList)} />
+    <LazyContent
+      View={ShopGroceriesList}
+      {...{ ...result, data: get(result, 'data[0].groceries') }}
+    />
   );
 };
