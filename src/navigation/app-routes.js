@@ -9,7 +9,6 @@ export const AppRoute = {
   KITCHEN: 'Kitchen',
   MARKET: 'Shopping Cart',
   GROCERIES_NEW: 'New Ingredient',
-  GROCERIES_EDIT: 'Edit Ingredient',
   PROFILE: 'Profile',
   ABOUT: 'About'
 };

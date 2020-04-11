@@ -1,12 +1,12 @@
 import flow from 'lodash/flow';
 
-export const unitText = {
-  un: '',
-  cu: 'cucharadas de',
-  gr: 'gramos de',
-  lt: 'litros de',
+export const longName = {
+  un: 'unidades',
+  cu: 'cucharadas',
+  gr: 'gramos',
+  lt: 'litros',
   cc: 'cm cúbicos',
-  tz: 'tazas de',
+  tz: 'tazas',
   ml: 'mililitros',
   di: 'dientes',
   ca: 'cabezas',
@@ -15,7 +15,22 @@ export const unitText = {
   xy: 'a gusto'
 };
 
-const convert = flow(
+export const unitText = {
+  un: '',
+  cu: `${longName.cu} de`,
+  gr: `${longName.gr} de`,
+  lt: `${longName.lt} de`,
+  cc: longName.cc,
+  tz: `${longName.tz} de`,
+  ml: longName.ml,
+  di: longName.di,
+  ca: longName.ca,
+  cn: longName.cn,
+  pi: longName.pi,
+  xy: longName.xy
+};
+
+export const convert = flow(
   Number,
   (qty) => qty.toFixed(2),
   (qty) => qty.replace('.00', ''),

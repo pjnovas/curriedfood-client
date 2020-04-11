@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-// import { StyleSheet } from 'react-native';
-// import Theme from '../theme';
 import get from 'lodash/get';
 import { TextInput, HelperText } from 'react-native-paper';
 import { useFormContext } from 'react-hook-form';
@@ -10,10 +8,8 @@ const setDefaultValue = (type, value) => {
 };
 
 const getValue = (type, value) => {
-  switch (type) {
-    case 'numeric':
-      return Number(value);
-      break;
+  if (type === 'numeric') {
+    return Number(value);
   }
 
   return `${value}`;
@@ -51,7 +47,5 @@ const FormInput = ({ type, name, required, ...props }) => {
     </>
   );
 };
-
-// const styles = StyleSheet.create({});
 
 export default FormInput;

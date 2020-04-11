@@ -1,36 +1,86 @@
-import React from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { FAB, List /*, Checkbox*/ } from 'react-native-paper';
+import { FAB, List, TextInput, IconButton, Divider } from 'react-native-paper';
+
+import isEmpty from 'lodash/isEmpty';
+import includes from 'lodash/includes';
+import uniq from 'lodash/uniq';
+import compact from 'lodash/compact';
+import sortBy from 'lodash/sortBy';
+import mapValues from 'lodash/mapValues';
 
 import { AppRoute } from 'navigation/app-routes';
 import { useNavigateTo } from 'hooks/navigation';
-import { getText } from 'utils/grocery';
+import { longName, convert } from 'utils/grocery';
 import { composeHooks } from 'utils/language';
+import IngredientDialog from './ingredient-edit-dialog';
 
-export const ShopGroceryList = ({ data, openEdition, openNewItem }) => (
+export const ShopGroceryList = ({
+  openEdition,
+  showEditItem,
+  openNewItem,
+  categories
+}) => (
   <>
-    <ScrollView>
-      {data.map((item) => (
-        <List.Item
-          key={item.id}
-          title={getText(item)}
-          onPress={openEdition(item)}
-          // right={() => (
-          //   <Checkbox
-          //   // status={checked ? 'checked' : 'unchecked'}
-          //   // onPress={() => {
-          //   //   this.setState({ checked: !checked });
-          //   // }}
-          //   />
-          // )}
-        />
+    <ScrollView contentContainerStyle={styles.layout}>
+      {Object.keys(categories).map((key) => (
+        <List.Section key={key}>
+          <List.Subheader style={styles.sectionTitle}>{key}</List.Subheader>
+          {categories[key].map((item) => (
+            <Fragment key={item.id}>
+              <List.Item
+                key={item.id}
+                title={item.product.name}
+                description={longName[item.product.unit]}
+                onPress={openEdition(item)}
+                left={(props) => (
+                  <TextInput
+                    {...props}
+                    selectTextOnFocus
+                    style={styles.quantity}
+                    defaultValue={convert(item.quantity)}
+                    mode="outlined"
+                    keyboardType="numeric"
+                    textAlign="right"
+                    maxLength={20}
+                    dense
+                  />
+                )}
+                right={(props) => <IconButton {...props} icon="close" />}
+              />
+              <Divider />
+            </Fragment>
+          ))}
+        </List.Section>
       ))}
     </ScrollView>
+
     <FAB style={styles.fab} icon="plus" onPress={openNewItem} />
+    {showEditItem && (
+      <IngredientDialog
+        onDismiss={openEdition()}
+        onSubmit={(data) => {
+          console.log(data);
+          openEdition()();
+        }}
+        {...showEditItem}
+      />
+    )}
   </>
 );
 
 const styles = StyleSheet.create({
+  layout: {
+    paddingBottom: 80
+  },
+  sectionTitle: {
+    fontSize: 16,
+    textTransform: 'uppercase',
+    alignSelf: 'center'
+  },
+  quantity: {
+    width: 80
+  },
   fab: {
     position: 'absolute',
     margin: 16,
@@ -39,14 +89,55 @@ const styles = StyleSheet.create({
   }
 });
 
-export const useNavigation = () => {
-  const editIngredient = useNavigateTo(AppRoute.GROCERIES_EDIT);
+export const useNavigation = ({ data }) => {
   const newIngredient = useNavigateTo(AppRoute.GROCERIES_NEW);
+  const [showEditItem, setVisibleEdit] = useState();
+  const [categories, setCategories] = useState({});
+
+  useEffect(() => {
+    const tags = compact(
+      uniq(
+        data.reduce(
+          (all, item) => [
+            ...all,
+            ...(item?.product.shop_tags || '').split(',')
+          ],
+          []
+        )
+      )
+    );
+
+    tags.sort();
+
+    let resolved = tags.reduce(
+      (all, tag) => ({
+        ...all,
+        [tag]: data.filter((item) => includes(item.product.shop_tags, tag))
+      }),
+      {
+        'sin categoria': data.filter((item) => isEmpty(item.product.shop_tags))
+      }
+    );
+
+    setCategories(
+      mapValues(resolved, (item) => sortBy(item, ({ product }) => product.name))
+    );
+  }, [data]);
 
   return {
+    openNewItem: () => newIngredient(),
     openEdition: (item) => () =>
-      editIngredient({ id: item.id, title: item.product.name }),
-    openNewItem: () => newIngredient()
+      item
+        ? setVisibleEdit({
+            ...item,
+            allTags:
+              Object.keys(categories).filter(
+                (key) => key !== 'sin categoria'
+              ) || []
+          })
+        : setVisibleEdit(),
+    showEditItem,
+    categories
   };
 };
 

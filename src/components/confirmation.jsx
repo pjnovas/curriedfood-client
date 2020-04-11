@@ -19,8 +19,8 @@ const Confirmation = ({
       dismissable={!loading}
       onDismiss={onDismiss}
     >
-      <Dialog.Title style={styles.contentText}>{title}</Dialog.Title>
-      <Dialog.Content>{children}</Dialog.Content>
+      <Dialog.Title style={styles.title}>{title}</Dialog.Title>
+      <Dialog.Content style={styles.content}>{children}</Dialog.Content>
       <Dialog.Actions>
         <Button disabled={loading} onPress={onDismiss}>
           Cancelar
@@ -43,9 +43,12 @@ const styles = StyleSheet.create({
   layout: {
     backgroundColor: Theme.colors.background
   },
-  contentText: {
+  title: {
     color: Theme.colors.text,
     textAlign: 'center'
+  },
+  content: {
+    // minHeight: 50
   },
   okButton: {
     marginHorizontal: 10
