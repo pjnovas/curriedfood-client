@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default 1`] = `
+<Fragment>
+  <ScrollViewMock
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 80,
+      }
+    }
+  />
+  <withTheme(FAB)
+    icon="plus"
+    style={
+      Object {
+        "bottom": 0,
+        "margin": 16,
+        "position": "absolute",
+        "right": 0,
+      }
+    }
+  />
+</Fragment>
+`;

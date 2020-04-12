@@ -6,21 +6,29 @@ import { get, noop } from 'lodash';
 
 import Theme from 'theme';
 import { composeHooks } from 'utils/language';
+import { useProductTags, parser } from 'hooks/products';
+// import { useRequestSWR } from 'hooks/service';
+import Spinner from 'components/spinner';
 import Chips from 'components/chips';
 
 export const ProductTagsDialog = ({
+  loading,
   setTagValue,
   onDismiss,
   onSubmitPress,
   title,
-  allTags,
-  tags
+  tags,
+  tagValue
 }) => (
   <Portal>
     <Dialog style={styles.layout} visible dismissable onDismiss={onDismiss}>
       <Dialog.Title style={styles.title}>{title}</Dialog.Title>
       <Dialog.Content style={styles.content}>
-        <Chips list={allTags} value={tags} onChange={setTagValue} />
+        {loading ? (
+          <Spinner />
+        ) : (
+          <Chips list={tags} value={tagValue} onChange={setTagValue} />
+        )}
       </Dialog.Content>
       <Dialog.Actions style={styles.actions}>
         <Button onPress={onDismiss}>Cancelar</Button>
@@ -42,8 +50,8 @@ ProductTagsDialog.propTypes = {
   onDismiss: PropTypes.func,
   onSubmitPress: PropTypes.func,
   title: PropTypes.string,
-  allTags: PropTypes.arrayOf(PropTypes.string),
-  tags: PropTypes.string
+  tags: PropTypes.arrayOf(PropTypes.string),
+  tagValue: PropTypes.string
 };
 
 ProductTagsDialog.defaultProps = {
@@ -51,8 +59,8 @@ ProductTagsDialog.defaultProps = {
   onDismiss: noop,
   onSubmitPress: noop,
   title: '',
-  allTags: [],
-  tags: ''
+  tags: [],
+  tagValue: ''
 };
 
 const styles = StyleSheet.create({
@@ -72,17 +80,19 @@ const styles = StyleSheet.create({
 });
 
 export const useProduct = ({ product, onSubmit, tagField }) => {
-  // const allTags = []; // TODO: get tags for a product by fetching all products
-  const [tags, setTagValue] = useState(get(product, tagField, ''));
-  // TODO: Save product
+  const { tags, loading } = useProductTags(parser[tagField]);
+  const [tagValue, setTagValue] = useState(get(product, tagField, ''));
 
   return {
     tags,
+    tagValue,
     title: product.name,
+    loading,
     setTagValue,
     onSubmitPress: () => {
-      console.log(tags);
-      onSubmit(tags);
+      // TODO: Save product
+      console.log(tagValue);
+      onSubmit(tagValue);
     }
   };
 };

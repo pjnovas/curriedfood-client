@@ -23,7 +23,9 @@ import { ShopGroceryList } from '../shop-grocery-list';
 
 takeSnapshots(
   {
-    default: {}
+    default: {
+      categories: {}
+    }
   },
   ShopGroceryList
 );

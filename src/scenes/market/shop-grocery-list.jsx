@@ -123,12 +123,7 @@ export const useNavigation = ({ data }) => {
 
   return {
     openNewItem: () => newIngredient(),
-    openEdition: (product) => () =>
-      setVisibleEdit({
-        product,
-        allTags:
-          Object.keys(categories).filter((key) => key !== 'sin categoria') || []
-      }),
+    openEdition: (product) => () => setVisibleEdit({ product }),
     closeEdit: () => setVisibleEdit(),
     reload: () => {
       // TODO: re fetch to remap categories
