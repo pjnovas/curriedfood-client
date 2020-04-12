@@ -7,7 +7,7 @@ import { get, noop } from 'lodash';
 import Theme from 'theme';
 import { composeHooks } from 'utils/language';
 import { useProductTags, parser } from 'hooks/products';
-// import { useRequestSWR } from 'hooks/service';
+import { useRequest } from 'hooks/service';
 import Spinner from 'components/spinner';
 import Chips from 'components/chips';
 
@@ -80,7 +80,11 @@ const styles = StyleSheet.create({
 });
 
 export const useProduct = ({ product, onSubmit, tagField }) => {
-  const { tags, loading } = useProductTags(parser[tagField]);
+  const request = useRequest({
+    // TODO: show an SnackBar onError
+  });
+
+  const { tags, loading, mutate } = useProductTags(parser[tagField]);
   const [tagValue, setTagValue] = useState(get(product, tagField, ''));
 
   return {
@@ -90,8 +94,13 @@ export const useProduct = ({ product, onSubmit, tagField }) => {
     loading,
     setTagValue,
     onSubmitPress: () => {
-      // TODO: Save product
-      console.log(tagValue);
+      request({
+        url: `/products/${product.id}`,
+        method: 'put',
+        data: { [tagField]: tagValue }
+      });
+
+      mutate({ ...product, [tagField]: tagValue });
       onSubmit(tagValue);
     }
   };

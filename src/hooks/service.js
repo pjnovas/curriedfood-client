@@ -18,7 +18,7 @@ const createAuthOptions = ({ jwt }, url) => ({
   }
 });
 
-export const useRequest = ({ withPlace, onError }) => {
+export const useRequest = ({ withPlace, onError } = {}) => {
   const [state, { signOut }] = useAuth();
   const placeID = usePlace();
 
