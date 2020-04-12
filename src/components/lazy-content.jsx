@@ -8,11 +8,11 @@ import { composeHooks } from 'utils/language';
 import Layout from './layout';
 import Spinner from './spinner';
 
-export const LazyContent = ({ showActivity, data, error, View }) => (
+export const LazyContent = ({ showActivity, data, error, View, ...props }) => (
   <Layout style={{ paddingTop: showActivity ? 0 : 4 }}>
     {showActivity && <Spinner bar />}
     {error && <Text>Error: {JSON.stringify(error)}</Text>}
-    {data && <View data={data} />}
+    {data && <View data={data} {...props} />}
   </Layout>
 );
 

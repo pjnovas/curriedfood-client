@@ -12,7 +12,7 @@ import ProductTagsDialog from 'scenes/products/product-tags-dialog';
 export const ShopGroceryList = ({
   showEditItem,
   openNewItem,
-  reload,
+  onUpdateProductTags,
   closeEdit,
   openEdition,
   categories
@@ -56,10 +56,7 @@ export const ShopGroceryList = ({
       <ProductTagsDialog
         tagField="shop_tags"
         onDismiss={closeEdit}
-        onSubmit={() => {
-          reload();
-          closeEdit();
-        }}
+        onSubmit={onUpdateProductTags}
         {...showEditItem}
       />
     )}
@@ -86,7 +83,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export const useNavigation = ({ data }) => {
+export const useNavigation = ({ data, revalidate }) => {
   const newIngredient = useNavigateTo(AppRoute.GROCERIES_NEW);
   const [showEditItem, setVisibleEdit] = useState();
   const [categories, setCategories] = useState({});
@@ -125,11 +122,12 @@ export const useNavigation = ({ data }) => {
     openNewItem: () => newIngredient(),
     openEdition: (product) => () => setVisibleEdit({ product }),
     closeEdit: () => setVisibleEdit(),
-    reload: () => {
-      // TODO: re fetch to remap categories
-    },
     showEditItem,
-    categories
+    categories,
+    onUpdateProductTags: () => {
+      revalidate();
+      setVisibleEdit();
+    }
   };
 };
 
