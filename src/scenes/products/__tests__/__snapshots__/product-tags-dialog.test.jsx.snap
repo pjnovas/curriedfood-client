@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default 1`] = `
+<withTheme(Portal)>
+  <withTheme(Dialog)
+    dismissable={true}
+    onDismiss={[Function]}
+    style={Object {}}
+    visible={true}
+  >
+    <withTheme(Dialog.Title)
+      style={
+        Object {
+          "color": "#ffffff",
+          "textAlign": "center",
+        }
+      }
+    />
+    <Dialog.Content
+      style={
+        Object {
+          "maxHeight": 400,
+          "minHeight": 100,
+        }
+      }
+    >
+      <Component
+        list={Array []}
+        value=""
+      />
+    </Dialog.Content>
+    <Dialog.Actions
+      style={Object {}}
+    >
+      <withTheme(Button)
+        onPress={[Function]}
+      >
+        Cancelar
+      </withTheme(Button)>
+      <withTheme(Button)
+        dark={true}
+        mode="contained"
+        onPress={[Function]}
+        style={
+          Object {
+            "marginHorizontal": 10,
+          }
+        }
+      >
+        OK
+      </withTheme(Button)>
+    </Dialog.Actions>
+  </withTheme(Dialog)>
+</withTheme(Portal)>
+`;
+
+exports[`withData 1`] = `
+<withTheme(Portal)>
+  <withTheme(Dialog)
+    dismissable={true}
+    onDismiss={[Function]}
+    style={Object {}}
+    visible={true}
+  >
+    <withTheme(Dialog.Title)
+      style={
+        Object {
+          "color": "#ffffff",
+          "textAlign": "center",
+        }
+      }
+    >
+      Aceitunas
+    </withTheme(Dialog.Title)>
+    <Dialog.Content
+      style={
+        Object {
+          "maxHeight": 400,
+          "minHeight": 100,
+        }
+      }
+    >
+      <Component
+        list={
+          Array [
+            "verduleria",
+            "super",
+            "carniceria",
+          ]
+        }
+        onChange={[Function]}
+        value="super,carniceria"
+      />
+    </Dialog.Content>
+    <Dialog.Actions
+      style={Object {}}
+    >
+      <withTheme(Button)
+        onPress={[Function]}
+      >
+        Cancelar
+      </withTheme(Button)>
+      <withTheme(Button)
+        dark={true}
+        mode="contained"
+        onPress={[Function]}
+        style={
+          Object {
+            "marginHorizontal": 10,
+          }
+        }
+      >
+        OK
+      </withTheme(Button)>
+    </Dialog.Actions>
+  </withTheme(Dialog)>
+</withTheme(Portal)>
+`;

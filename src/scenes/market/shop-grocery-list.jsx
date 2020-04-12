@@ -7,12 +7,14 @@ import { AppRoute } from 'navigation/app-routes';
 import { useNavigateTo } from 'hooks/navigation';
 import { longName, convert } from 'utils/grocery';
 import { composeHooks } from 'utils/language';
-import IngredientDialog from './ingredient-edit-dialog';
+import ProductTagsDialog from 'scenes/products/product-tags-dialog';
 
 export const ShopGroceryList = ({
-  openEdition,
   showEditItem,
   openNewItem,
+  reload,
+  closeEdit,
+  openEdition,
   categories
 }) => (
   <>
@@ -26,7 +28,7 @@ export const ShopGroceryList = ({
                 key={item.id}
                 title={item.product.name}
                 description={longName[item.product.unit]}
-                onPress={openEdition(item)}
+                onPress={openEdition(item.product)}
                 left={(props) => (
                   <TextInput
                     {...props}
@@ -51,11 +53,12 @@ export const ShopGroceryList = ({
 
     <FAB style={styles.fab} icon="plus" onPress={openNewItem} />
     {showEditItem && (
-      <IngredientDialog
-        onDismiss={openEdition()}
-        onSubmit={(data) => {
-          console.log(data);
-          openEdition()();
+      <ProductTagsDialog
+        tagField="shop_tags"
+        onDismiss={closeEdit}
+        onSubmit={() => {
+          reload();
+          closeEdit();
         }}
         {...showEditItem}
       />
@@ -120,16 +123,16 @@ export const useNavigation = ({ data }) => {
 
   return {
     openNewItem: () => newIngredient(),
-    openEdition: (item) => () =>
-      item
-        ? setVisibleEdit({
-            ...item,
-            allTags:
-              Object.keys(categories).filter(
-                (key) => key !== 'sin categoria'
-              ) || []
-          })
-        : setVisibleEdit(),
+    openEdition: (product) => () =>
+      setVisibleEdit({
+        product,
+        allTags:
+          Object.keys(categories).filter((key) => key !== 'sin categoria') || []
+      }),
+    closeEdit: () => setVisibleEdit(),
+    reload: () => {
+      // TODO: re fetch to remap categories
+    },
     showEditItem,
     categories
   };
