@@ -1,45 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import noop from 'lodash/noop';
 import { ScrollView, StyleSheet } from 'react-native';
 import { Chip } from 'react-native-paper';
 
-const Chips = ({ list, value, onChange }) => {
-  const items = (value || '').split(',');
+import { noop, xor } from 'lodash';
+import { composeHooks } from 'utils/language';
 
-  return (
-    <ScrollView>
-      {list.map((name) => (
-        <Chip
-          key={name}
-          selected={items.includes(name)}
-          mode="outlined"
-          style={styles.chip}
-          onPress={() =>
-            onChange(
-              (items.includes(name)
-                ? items.filter((item) => item !== name)
-                : [...items, name]
-              ).join(',')
-            )
-          }
-        >
-          {name}
-        </Chip>
-      ))}
-    </ScrollView>
-  );
-};
+export const Chips = ({ list, items, onPress, ...props }) => (
+  <ScrollView>
+    {list.map((name) => (
+      <Chip
+        key={name}
+        selected={items.includes(name)}
+        mode="outlined"
+        style={styles.chip}
+        onPress={onPress(name)}
+        {...props}
+      >
+        {name}
+      </Chip>
+    ))}
+  </ScrollView>
+);
 
 Chips.propTypes = {
+  ...Chip.PropTypes,
   list: PropTypes.arrayOf(PropTypes.string).isRequired,
-  value: PropTypes.string,
-  onChange: PropTypes.func
+  items: PropTypes.arrayOf(PropTypes.string),
+  onPress: PropTypes.func
 };
 
 Chips.defaultProps = {
-  value: '',
-  onChange: noop
+  items: [],
+  onPress: noop
 };
 
 const styles = StyleSheet.create({
@@ -49,4 +42,13 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Chips;
+export const useFilter = ({ value, onChange }) => {
+  const items = value ? value.split(',') : [];
+
+  return {
+    items,
+    onPress: (name) => () => onChange(xor(items, [name]).join(','))
+  };
+};
+
+export default composeHooks({ useFilter })(Chips);

@@ -1,5 +1,5 @@
 import React from 'react';
-import get from 'lodash/get';
+import { get } from 'lodash';
 import { StyleSheet } from 'react-native';
 import { TabBar } from 'react-native-tab-view';
 

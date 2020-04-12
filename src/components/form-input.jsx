@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import get from 'lodash/get';
+import { get } from 'lodash';
 import { TextInput, Caption } from 'react-native-paper';
 import { useFormikContext } from 'formik';
 import Theme from '../theme';

@@ -1,5 +1,5 @@
 import React from 'react';
-import get from 'lodash/get';
+import { get } from 'lodash';
 
 import { useRequestSWR } from 'hooks/service';
 import LazyContent from 'components/lazy-content';

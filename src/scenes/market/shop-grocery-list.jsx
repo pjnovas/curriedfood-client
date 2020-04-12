@@ -1,13 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { FAB, List, TextInput, IconButton, Divider } from 'react-native-paper';
-
-import isEmpty from 'lodash/isEmpty';
-import includes from 'lodash/includes';
-import uniq from 'lodash/uniq';
-import compact from 'lodash/compact';
-import sortBy from 'lodash/sortBy';
-import mapValues from 'lodash/mapValues';
+import { isEmpty, includes, uniq, compact, sortBy, mapValues } from 'lodash';
 
 import { AppRoute } from 'navigation/app-routes';
 import { useNavigateTo } from 'hooks/navigation';

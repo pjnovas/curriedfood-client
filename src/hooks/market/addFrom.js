@@ -1,7 +1,5 @@
-import get from 'lodash/get';
-import find from 'lodash/find';
-import flow from 'lodash/flow';
-import map from 'lodash/fp/map';
+import { get, find, flow } from 'lodash';
+import { map } from 'lodash/fp';
 
 import { AppRoute } from 'navigation/app-routes';
 import fetchList from './fetchList';

@@ -1,4 +1,4 @@
-import flow from 'lodash/flow';
+import { flow } from 'lodash';
 
 export const longName = {
   un: 'unidades',

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native-paper';
 import { useFocusEffect } from '@react-navigation/native';
-import noop from 'lodash/noop';
+import { noop } from 'lodash';
 
 import { composeHooks } from 'utils/language';
 import Layout from './layout';

@@ -1,4 +1,4 @@
-import noop from 'lodash/noop';
+import { noop } from 'lodash';
 import Confirmation from '../confirmation';
 
 const props = {

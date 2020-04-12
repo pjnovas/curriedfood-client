@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Portal, Dialog, Button } from 'react-native-paper';
-import get from 'lodash/get';
+import { get } from 'lodash';
 import Theme from 'theme';
 import Chips from 'components/chips';
 

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet } from 'react-native';
-
-import find from 'lodash/find';
-import get from 'lodash/get';
+import { find, get } from 'lodash';
 
 import { composeHooks } from 'utils/language';
 import { useRequestSWR } from 'hooks/service';

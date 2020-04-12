@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { FAB, Subheading } from 'react-native-paper';
 import { useForm, FormContext } from 'react-hook-form';
 
-import noop from 'lodash/noop';
+import { noop } from 'lodash';
 import { composeHooks } from 'utils/language';
 import { longName } from 'utils/grocery';
 import TextInput from 'components/input';

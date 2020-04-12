@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import get from 'lodash/get';
+import { get } from 'lodash';
 import axios from 'axios';
 import { AsyncStorage } from 'react-native';
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import get from 'lodash/get';
+import { get } from 'lodash';
 import { TextInput, HelperText } from 'react-native-paper';
 import { useFormContext } from 'react-hook-form';
 

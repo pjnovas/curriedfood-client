@@ -1,7 +1,6 @@
 import useSWR from 'swr';
 import axios from 'axios';
-import get from 'lodash/get';
-import curry from 'lodash/curry';
+import { get, curry } from 'lodash';
 
 import { useAuth, usePlace } from 'context/auth-context';
 import Config from 'config.json';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import noop from 'lodash/noop';
-import times from 'lodash/times';
+import { noop, times } from 'lodash';
+
 import { StyleSheet } from 'react-native';
 import { ToggleButton, Text } from 'react-native-paper';
 import Layout from './layout';
