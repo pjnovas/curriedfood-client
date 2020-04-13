@@ -1,4 +1,5 @@
-import { flow } from 'lodash';
+import { flow, get, isEmpty, includes, sortBy, mapValues } from 'lodash';
+import { parseTags } from 'hooks/products';
 
 export const longName = {
   un: 'unidades',
@@ -57,3 +58,27 @@ export const getText = ({
 
   return text;
 };
+
+export const groupByTags = (tagProp) => (data) => {
+  const tags = parseTags(tagProp)(data);
+
+  let resolved = tags.reduce(
+    (all, tag) => ({
+      ...all,
+      [tag]: data.filter((item) => includes(get(item, tagProp), tag))
+    }),
+    {
+      'sin categoria': data.filter((item) => isEmpty(get(item, tagProp)))
+    }
+  );
+
+  if (isEmpty(resolved['sin categoria'])) {
+    delete resolved['sin categoria'];
+  }
+
+  return mapValues(resolved, (item) =>
+    sortBy(item, ({ product }) => product.name)
+  );
+};
+
+export const groupByShopTags = groupByTags('product.shop_tags');

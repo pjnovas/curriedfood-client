@@ -17,7 +17,7 @@ export const LazyContent = ({ showActivity, data, error, View, ...props }) => (
 );
 
 LazyContent.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   isLoading: PropTypes.bool,
   error: PropTypes.any,
   View: PropTypes.any,

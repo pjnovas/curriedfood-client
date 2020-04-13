@@ -1,80 +1,38 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { FAB, List, TextInput, IconButton, Divider } from 'react-native-paper';
-import { isEmpty, includes, uniq, compact, sortBy, mapValues } from 'lodash';
+import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
+import { FAB } from 'react-native-paper';
 
 import { AppRoute } from 'navigation/app-routes';
 import { useNavigateTo } from 'hooks/navigation';
-import { longName, convert } from 'utils/grocery';
 import { composeHooks } from 'utils/language';
 import ProductTagsDialog from 'scenes/products/product-tags-dialog';
+import IngredientList from './ingredients/list';
+import { useShopping } from './context';
 
 export const ShopGroceryList = ({
-  showEditItem,
-  openNewItem,
-  onUpdateProductTags,
-  closeEdit,
-  openEdition,
-  categories
+  onPressNewItem,
+  productTagsEdition,
+  onDismissProductTags,
+  onChangeProductTags,
+  onPressListItem
 }) => (
   <>
-    <ScrollView contentContainerStyle={styles.layout}>
-      {Object.keys(categories).map((key) => (
-        <List.Section key={key}>
-          <List.Subheader style={styles.sectionTitle}>{key}</List.Subheader>
-          {categories[key].map((item) => (
-            <Fragment key={item.id}>
-              <List.Item
-                key={item.id}
-                title={item.product.name}
-                description={longName[item.product.unit]}
-                onPress={openEdition(item.product)}
-                left={(props) => (
-                  <TextInput
-                    {...props}
-                    selectTextOnFocus
-                    style={styles.quantity}
-                    defaultValue={convert(item.quantity)}
-                    mode="outlined"
-                    keyboardType="numeric"
-                    textAlign="right"
-                    maxLength={20}
-                    dense
-                  />
-                )}
-                right={(props) => <IconButton {...props} icon="close" />}
-              />
-              <Divider />
-            </Fragment>
-          ))}
-        </List.Section>
-      ))}
-    </ScrollView>
+    <IngredientList onPressListItem={onPressListItem} />
 
-    <FAB style={styles.fab} icon="plus" onPress={openNewItem} />
-    {showEditItem && (
+    <FAB style={styles.fab} icon="plus" onPress={onPressNewItem} />
+
+    {productTagsEdition && (
       <ProductTagsDialog
         tagField="shop_tags"
-        onDismiss={closeEdit}
-        onSubmit={onUpdateProductTags}
-        {...showEditItem}
+        onDismiss={onDismissProductTags}
+        onSubmit={onChangeProductTags}
+        {...productTagsEdition}
       />
     )}
   </>
 );
 
 const styles = StyleSheet.create({
-  layout: {
-    paddingBottom: 80
-  },
-  sectionTitle: {
-    fontSize: 16,
-    textTransform: 'uppercase',
-    alignSelf: 'center'
-  },
-  quantity: {
-    width: 80
-  },
   fab: {
     position: 'absolute',
     margin: 16,
@@ -83,52 +41,29 @@ const styles = StyleSheet.create({
   }
 });
 
-export const useNavigation = ({ data, revalidate }) => {
-  const newIngredient = useNavigateTo(AppRoute.GROCERIES_NEW);
-  const [showEditItem, setVisibleEdit] = useState();
-  const [categories, setCategories] = useState({});
-
-  useEffect(() => {
-    const tags = compact(
-      uniq(
-        data.reduce(
-          (all, item) => [
-            ...all,
-            ...(item?.product.shop_tags || '').split(',')
-          ],
-          []
-        )
-      )
-    );
-
-    tags.sort();
-
-    let resolved = tags.reduce(
-      (all, tag) => ({
-        ...all,
-        [tag]: data.filter((item) => includes(item.product.shop_tags, tag))
-      }),
-      {
-        'sin categoria': data.filter((item) => isEmpty(item.product.shop_tags))
-      }
-    );
-
-    setCategories(
-      mapValues(resolved, (item) => sortBy(item, ({ product }) => product.name))
-    );
-  }, [data]);
+export const useProductTagEdition = () => {
+  const { revalidate } = useShopping();
+  const [productTagsEdition, setVisibleEdit] = useState();
 
   return {
-    openNewItem: () => newIngredient(),
-    openEdition: (product) => () => setVisibleEdit({ product }),
-    closeEdit: () => setVisibleEdit(),
-    showEditItem,
-    categories,
-    onUpdateProductTags: () => {
-      revalidate();
+    productTagsEdition,
+    onPressListItem: (item) => () => setVisibleEdit({ product: item.product }),
+    onDismissProductTags: () => setVisibleEdit(),
+    onChangeProductTags: () => {
       setVisibleEdit();
+      revalidate();
     }
   };
 };
 
-export default composeHooks({ useNavigation })(ShopGroceryList);
+export const useNavigation = () => {
+  const newIngredient = useNavigateTo(AppRoute.GROCERIES_NEW);
+  return {
+    onPressNewItem: () => newIngredient()
+  };
+};
+
+export default composeHooks({
+  useNavigation,
+  useProductTagEdition
+})(ShopGroceryList);

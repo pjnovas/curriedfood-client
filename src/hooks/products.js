@@ -1,9 +1,24 @@
 import { flow } from 'lodash';
-import { map, compact, uniq, flatten, prop, split } from 'lodash/fp';
+import {
+  map,
+  compact,
+  uniq,
+  flatten,
+  prop,
+  split,
+  identity,
+  sortBy
+} from 'lodash/fp';
 import { useRequestSWR } from 'hooks/service';
 
-const parseTags = (field) =>
-  flow(map(flow(prop(field), split(','))), flatten, uniq, compact);
+export const parseTags = (field) =>
+  flow(
+    map(flow(prop(field), split(','))),
+    flatten,
+    uniq,
+    compact,
+    sortBy(identity)
+  );
 
 export const parser = {
   shop_tags: parseTags('shop_tags'),

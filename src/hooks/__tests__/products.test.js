@@ -11,7 +11,7 @@ const products = [
   { id: 6 }
 ];
 
-const expectedTags = ['verduleria', 'super', 'carniceria'];
+const expectedTags = ['carniceria', 'super', 'verduleria'];
 
 describe('parser', () => {
   test('parses a CSV field from a list of products', () => {
