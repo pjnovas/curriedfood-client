@@ -1,115 +1,185 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`default 1`] = `
-<ScrollViewMock>
-  <withTheme(Chip)
-    key="almacen"
-    mode="outlined"
-    selected={false}
-    style={
-      Object {
-        "borderRadius": 4,
-        "marginVertical": 5,
+<Fragment>
+  <ScrollViewMock>
+    <withTheme(Chip)
+      key="almacen"
+      mode="outlined"
+      selected={false}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
       }
-    }
-  >
-    almacen
-  </withTheme(Chip)>
-  <withTheme(Chip)
-    key="super"
-    mode="outlined"
-    selected={false}
-    style={
-      Object {
-        "borderRadius": 4,
-        "marginVertical": 5,
+    >
+      almacen
+    </withTheme(Chip)>
+    <withTheme(Chip)
+      key="super"
+      mode="outlined"
+      selected={false}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
       }
-    }
-  >
-    super
-  </withTheme(Chip)>
-  <withTheme(Chip)
-    key="verduleria"
-    mode="outlined"
-    selected={false}
-    style={
-      Object {
-        "borderRadius": 4,
-        "marginVertical": 5,
+    >
+      super
+    </withTheme(Chip)>
+    <withTheme(Chip)
+      key="verduleria"
+      mode="outlined"
+      selected={false}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
       }
-    }
-  >
-    verduleria
-  </withTheme(Chip)>
-  <withTheme(Chip)
-    key="carniceria"
-    mode="outlined"
-    selected={false}
-    style={
-      Object {
-        "borderRadius": 4,
-        "marginVertical": 5,
+    >
+      verduleria
+    </withTheme(Chip)>
+    <withTheme(Chip)
+      key="carniceria"
+      mode="outlined"
+      selected={false}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
       }
-    }
-  >
-    carniceria
-  </withTheme(Chip)>
-</ScrollViewMock>
+    >
+      carniceria
+    </withTheme(Chip)>
+  </ScrollViewMock>
+</Fragment>
 `;
 
 exports[`withItems 1`] = `
-<ScrollViewMock>
-  <withTheme(Chip)
-    key="almacen"
-    mode="outlined"
-    selected={false}
-    style={
-      Object {
-        "borderRadius": 4,
-        "marginVertical": 5,
+<Fragment>
+  <ScrollViewMock>
+    <withTheme(Chip)
+      key="almacen"
+      mode="outlined"
+      selected={false}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
       }
-    }
-  >
-    almacen
-  </withTheme(Chip)>
-  <withTheme(Chip)
-    key="super"
-    mode="outlined"
-    selected={true}
-    style={
-      Object {
-        "borderRadius": 4,
-        "marginVertical": 5,
+    >
+      almacen
+    </withTheme(Chip)>
+    <withTheme(Chip)
+      key="super"
+      mode="outlined"
+      selected={true}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
       }
-    }
-  >
-    super
-  </withTheme(Chip)>
-  <withTheme(Chip)
-    key="verduleria"
-    mode="outlined"
-    selected={true}
-    style={
-      Object {
-        "borderRadius": 4,
-        "marginVertical": 5,
+    >
+      super
+    </withTheme(Chip)>
+    <withTheme(Chip)
+      key="verduleria"
+      mode="outlined"
+      selected={true}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
       }
-    }
-  >
-    verduleria
-  </withTheme(Chip)>
-  <withTheme(Chip)
-    key="carniceria"
-    mode="outlined"
-    selected={false}
-    style={
-      Object {
-        "borderRadius": 4,
-        "marginVertical": 5,
+    >
+      verduleria
+    </withTheme(Chip)>
+    <withTheme(Chip)
+      key="carniceria"
+      mode="outlined"
+      selected={false}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
       }
-    }
-  >
-    carniceria
-  </withTheme(Chip)>
-</ScrollViewMock>
+    >
+      carniceria
+    </withTheme(Chip)>
+  </ScrollViewMock>
+</Fragment>
+`;
+
+exports[`withNews 1`] = `
+<Fragment>
+  <ScrollViewMock>
+    <withTheme(Chip)
+      key="almacen"
+      mode="outlined"
+      selected={false}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
+      }
+    >
+      almacen
+    </withTheme(Chip)>
+    <withTheme(Chip)
+      key="super"
+      mode="outlined"
+      selected={true}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
+      }
+    >
+      super
+    </withTheme(Chip)>
+    <withTheme(Chip)
+      key="verduleria"
+      mode="outlined"
+      selected={true}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
+      }
+    >
+      verduleria
+    </withTheme(Chip)>
+    <withTheme(Chip)
+      key="carniceria"
+      mode="outlined"
+      selected={false}
+      style={
+        Object {
+          "borderRadius": 4,
+          "marginVertical": 5,
+        }
+      }
+    >
+      carniceria
+    </withTheme(Chip)>
+  </ScrollViewMock>
+  <withTheme(TextInput)
+    dense={true}
+    label="Nueva Categoría"
+    mode="outlined"
+    onChangeText={[Function]}
+    value="other-new"
+  />
+</Fragment>
 `;
