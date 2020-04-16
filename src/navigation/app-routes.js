@@ -8,7 +8,6 @@ export const AppRoute = {
   DISHES_DETAILS: 'Dishes Details',
   KITCHEN: 'Kitchen',
   MARKET: 'Shopping Cart',
-  GROCERIES_NEW: 'New Ingredient',
   PROFILE: 'Profile',
   ABOUT: 'About'
 };

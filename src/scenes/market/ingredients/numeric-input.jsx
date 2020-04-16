@@ -8,7 +8,7 @@ export const NumberInput = (props) => (
   <TextInput
     {...props}
     selectTextOnFocus
-    style={styles.layout}
+    style={[styles.layout, props.style]}
     mode="outlined"
     keyboardType="numeric"
     textAlign="right"

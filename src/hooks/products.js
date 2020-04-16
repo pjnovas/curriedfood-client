@@ -25,7 +25,7 @@ export const parser = {
   kitchen_tags: parseTags('kitchen_tags')
 };
 
-export const useProductTags = (parser) => {
+export const useProductList = () => {
   const { data, ...rest } = useRequestSWR(
     {
       url: '/products'
@@ -34,8 +34,17 @@ export const useProductTags = (parser) => {
   );
 
   return {
-    tags: data && parser(data),
+    data: data ? sortBy('name', data) : data,
     loading: !!(data === null),
+    ...rest
+  };
+};
+
+export const useProductTags = (parser) => {
+  const { data, ...rest } = useProductList();
+
+  return {
+    tags: data && parser(data),
     ...rest
   };
 };

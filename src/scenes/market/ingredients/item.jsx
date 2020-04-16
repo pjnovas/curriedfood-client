@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { List, IconButton } from 'react-native-paper';
 
+import Theme from 'theme';
 import { longName, convert } from 'utils/grocery';
 import NumericInput from './numeric-input';
 
@@ -25,7 +26,7 @@ export const IngredientItem = ({ onPress, onRemove, onChange, ...item }) => (
 const styles = StyleSheet.create({
   layout: {
     borderBottomWidth: 1,
-    borderBottomColor: '#112222'
+    borderBottomColor: Theme.colors.divider
   }
 });
 

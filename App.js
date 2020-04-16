@@ -13,13 +13,13 @@ export default () => (
   <PaperProvider theme={theme}>
     <SafeAreaProvider>
       <ErrorBoundary>
-        <Portal.Host>
-          <NavigationContainer>
-            <AuthProvider>
+        <NavigationContainer>
+          <AuthProvider>
+            <Portal.Host>
               <AppNavigator />
-            </AuthProvider>
-          </NavigationContainer>
-        </Portal.Host>
+            </Portal.Host>
+          </AuthProvider>
+        </NavigationContainer>
       </ErrorBoundary>
     </SafeAreaProvider>
   </PaperProvider>

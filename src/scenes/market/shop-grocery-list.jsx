@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { FAB } from 'react-native-paper';
 
-import { AppRoute } from 'navigation/app-routes';
-import { useNavigateTo } from 'hooks/navigation';
 import { composeHooks } from 'utils/language';
 import ProductTagsDialog from 'scenes/products/product-tags-dialog';
 import IngredientList from './ingredients/list';
+import CreateIngredientDialog from './ingredients/create';
 import { useShopping } from './context';
 
 export const ShopGroceryList = ({
   onPressNewItem,
+  showNewIngredient,
+  onDismissCreateIngredient,
+  onCreateIngredient,
+
   productTagsEdition,
   onDismissProductTags,
   onChangeProductTags,
@@ -18,15 +21,20 @@ export const ShopGroceryList = ({
 }) => (
   <>
     <IngredientList onPressListItem={onPressListItem} />
-
-    <FAB style={styles.fab} icon="plus" onPress={onPressNewItem} />
-
     {productTagsEdition && (
       <ProductTagsDialog
         tagField="shop_tags"
         onDismiss={onDismissProductTags}
         onSubmit={onChangeProductTags}
         {...productTagsEdition}
+      />
+    )}
+
+    <FAB style={styles.fab} icon="plus" onPress={onPressNewItem} />
+    {showNewIngredient && (
+      <CreateIngredientDialog
+        onDismiss={onDismissCreateIngredient}
+        onSubmit={onCreateIngredient}
       />
     )}
   </>
@@ -56,14 +64,23 @@ export const useProductTagEdition = () => {
   };
 };
 
-export const useNavigation = () => {
-  const newIngredient = useNavigateTo(AppRoute.GROCERIES_NEW);
+export const useCreateIngredient = () => {
+  const { data, update, revalidate } = useShopping();
+  const [showNewIngredient, setVisibleNew] = useState(false);
+
   return {
-    onPressNewItem: () => newIngredient()
+    showNewIngredient,
+    onPressNewItem: () => setVisibleNew(true),
+    onDismissCreateIngredient: () => setVisibleNew(false),
+    onCreateIngredient: async (newItem) => {
+      await update([...data.groceries, newItem]);
+      setVisibleNew(false);
+      revalidate();
+    }
   };
 };
 
 export default composeHooks({
-  useNavigation,
+  useCreateIngredient,
   useProductTagEdition
 })(ShopGroceryList);

@@ -9,19 +9,12 @@ const colors = {
   error: '#CF6679',
   onBackground: Colors.white,
   onSurface: Colors.white,
-  text: Colors.white
-  // disabled: color(white)
-  //   .alpha(0.38)
-  //   .rgb()
-  //   .string(),
-  // placeholder: color(white)
-  //   .alpha(0.54)
-  //   .rgb()
-  //   .string(),
-  // backdrop: color(black)
-  //   .alpha(0.5)
-  //   .rgb()
-  //   .string(),
+  text: Colors.white,
+  border: '#ffffff38',
+  divider: '#ffffff12'
+  // disabled: color(white).alpha(0.38).rgb().string(),
+  // placeholder: color(white).alpha(0.54).rgb().string(),
+  // backdrop: color(black).alpha(0.5).rgb().string(),
   // notification: pinkA100,
 };
 
